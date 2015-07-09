@@ -1,0 +1,57 @@
+<a ng-href="/flashcards" class="btn btn-danger">Flash Cards View</a>
+
+<div class="page-header">
+	<h1>
+		Characters
+		<a href="/characters/create" class="btn btn-default">
+			<span class="glphicon glyphicon-plus"></span>
+			New Character
+		</a>
+	</h1>
+</div>
+
+
+<table class="table table-bordered table-striped" ng-show="character.characters">
+	<thead>
+		<tr>
+			<th>_id</th>
+			<th>symbol</th>
+			<th>definition</th>
+			<th>pronunciation</th>
+			<th class="col-sm-2"></th>
+		</tr>
+	</thead>
+	<tbody  ng-repeat="char in character.characters" ng-click="showDetails = ! showDetails">
+
+		<!-- loop over characters -->
+		<tr>
+			<td>{{ char._id }}</td>
+			<td>{{ char.symbol }}</td>
+			<td>{{ char.definition }}</td>
+			<td>{{ char.pronunciation }}</td>
+			
+
+
+			<td class="com-sm-2">
+				<a ng-href="/characters/{{ char._id }}" class="btn btn-danger">Edit</a>
+				<a href="#" ng-click="character.deleteCharacter(char._id)" class="btn btn-primary">Delete</a>
+			</td>
+		</tr>
+
+		<tr ng-show="showDetails">
+			<td>Radicals</td>
+			<td>Category</td>
+			<td>Proficiency</td>
+			<td>Date</td>
+			<td>Other</td>
+		</tr>
+		<tr ng-show="showDetails">
+			<td>{{ char.radicals }}</td>
+			<td>{{ char.category }}</td>
+			<td>{{ char.proficiency }}</td>
+			<td>{{ char.date }}</td>
+			<td>{{ char.other }}</td>
+		</tr>
+
+	</tbody>
+</table>

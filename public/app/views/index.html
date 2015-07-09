@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Angular App</title>
+
+	<!-- FOR ANGULAR ROUTING -->
+	<base href="/">
+
+	<!-- CSS -->
+	<!-- load bootstrap and our stylesheet -->
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+	<link rel="stylesheet" href="assets/css/style.css">
+	
+	<!-- JS -->
+	<!-- load angular and our custom application -->
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.8/angular.min.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.8/angular-route.js"></script>
+
+	<!-- controllers -->
+	<script src="app/controllers/characterCtrl.js"></script>
+	<script src="app/controllers/quizCtrl.js"></script>
+
+	<!-- services -->
+	<script src="app/services/characterService.js"></script>
+	<script src="app/services/quizService.js"></script>
+
+	<!-- directives -->
+	<script src="app/directives/resultsDirective.js"></script>
+
+	<!-- main angular app files -->
+	<script src="app/app.routes.js"></script>
+	<script src="app/app.js"></script>
+</head>
+
+<body class="container" ng-app="characterApp" ng-controller="characterController as character">
+	<div class="jumbotron">
+		<h2 id="index-header-text"><a ng-href="/">Quiz App</a></h2>
+		<img id='jiji-image' src="assets/svg/jiji.svg">
+	</div>
+
+	<main class="container">
+		<!-- angular views -->
+		<div ng-view></div>
+	</main>
+
+</body>
+</html>

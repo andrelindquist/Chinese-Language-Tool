@@ -1,0 +1,8 @@
+    <div ng-repeat="question in ngModel.quiz.questions">
+    	<h1>{{question.question}}</h1>
+<!--     	<h3>{{question.choices[0]}}</h3>
+    	<h3>{{question.choices[1]}}</h3>
+    	<h3>{{question.choices[2]}}</h3>
+    	<h3>{{question.choices[3]}}</h3> -->
+    	<h3 ng-repeat="choice in question.choices" ng-class="{'quiz-answer': choice == question.answer, 'quiz-attempted': choice == question.attemptedAnswer}">{{choice}}</h3>
+    </div>

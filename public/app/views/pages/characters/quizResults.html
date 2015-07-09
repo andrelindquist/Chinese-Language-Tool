@@ -1,0 +1,10 @@
+<!-- Quiz results -->
+<div ng-show="character.resultsShowing">
+	<h1>You answered {{character.correctCount}} out of {{character.questionObjectArray.length}} questions correctly!</h1>
+
+	<div ng-repeat="question in character.questionObjectArray">
+		<h2>Question # {{character.questionObjectArray.indexOf(question) + 1}}</h2>
+		<h3 ng-repeat="choice in question.choices">{{choice}}</h3>
+	</div>
+
+</div>

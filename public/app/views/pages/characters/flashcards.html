@@ -1,0 +1,37 @@
+<a ng-href="/characters" class="btn btn-danger">Table View</a>
+<a ng-href="/quiz" class="btn btn-danger">Quiz Page</a>
+
+<div class="page-header">
+	<h1>
+		<a href="/characters/create" class="btn btn-default">Add New Character</a>
+	</h1>
+	<div>
+		Key<input ng-model="character.key" id="key"></input>
+		Value<input ng-model="character.value" id="value"></input>
+		<button ng-click="character.getData(character.key, character.value)">Count</button>
+		<p ng-show="character.countResult.calculated">{{character.countResult.message}}</p>
+		<br></br>
+		<input ng-model="filterQuery" type="text" 
+        placeholder="Filter by">
+        <input ng-model="sortQuery" type="text" placeholder="Sort by"
+	</div>
+</div>
+
+ <div id="flash-card-wrapper" ng-show"character.characters">
+ 	<h4>Flash Cards</h4>
+	<div id="flash-card" class="col-md-2" ng-repeat="char in character.characters | filter:filterQuery | orderBy:sortQuery" ng-click="showDetails = ! showDetails">
+		<p id="symbol">{{ char.symbol }}</p>
+
+		<div id="details" ng-show="showDetails">
+			<p>{{ char.definition }}</p>
+			<p>{{ char.pronunciation }}</p>
+			<p ng-show="char.radicals">Radicals: {{ char.radicals }}</p>
+			<p ng-show="char.category">Category: {{ char.category }}</p>
+			<p ng-show="char.proficiency">Proficiency: {{ char.proficiency }}</p>
+			<p ng-show="char.date">Date Entered: {{ char.date }}</p>
+			<p ng-show="char.other">Other: {{ char.other }}</p>
+			<a ng-href="/characters/{{ char._id }}" class="btn btn-danger">Edit</a>
+			<a href="#" ng-click="character.deleteCharacter(char._id)" class="btn btn-primary">Delete</a>
+		</div>
+	</div>
+</div>

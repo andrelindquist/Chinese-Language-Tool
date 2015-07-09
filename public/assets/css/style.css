@@ -1,0 +1,38 @@
+#flash-card {
+	border: 2px #6666aa solid;
+	border-radius: .5em;
+}
+
+#flash-card #symbol {
+	font-size: 3em;
+	text-align: center;
+}
+
+.quiz-answer {
+	color: #8888cc;
+	font-weight: 400;
+}
+
+.quiz-attempted {
+	color: #bb5555;
+}
+
+.quiz-attempted.quiz-answer {
+	color: #22dd22;
+}
+
+a:hover, a:visited, a:link, a:active
+{
+    text-decoration: none;
+}
+
+#jiji-image {
+	display: inline;
+	height: 12.5%;
+	width: 12.5%;
+}
+
+#index-header-text {
+	display: inline;
+	font-weight: bold;
+}
