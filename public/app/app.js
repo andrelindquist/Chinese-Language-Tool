@@ -5,6 +5,7 @@ angular.module('characterApp', [
 	'characterCtrl',
 	'quizService',
 	'quizCtrl',
-    'resultsDirective'
+    'resultsDirective',
+    'iframeDirective'
 
 	]);

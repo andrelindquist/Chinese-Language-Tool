@@ -34,6 +34,13 @@
 	</div>
 
 	<div class="form-group">
+		<label class="col-sm-2 control-label">Stroke Count</label>
+		<div class="col-sm-6">
+			<input type="text" class="form-control" ng-model="character.characterData.strokeCount">
+		</div>
+	</div>
+
+	<div class="form-group">
 		<label class="col-sm-2 control-label">Category</label>
 		<div class="col-sm-6">
 			<input type="text" class="form-control" ng-model="character.characterData.category">
@@ -44,13 +51,6 @@
 		<label class="col-sm-2 control-label">Proficiency</label>
 		<div class="col-sm-6">
 			<input type="text" class="form-control" ng-model="character.characterData.proficiency">
-		</div>
-	</div>
-
-	<div class="form-group">
-		<label class="col-sm-2 control-label">Date</label>
-		<div class="col-sm-6">
-			<input type="text" class="form-control" ng-model="character.characterData.date">
 		</div>
 	</div>
 
@@ -82,3 +82,6 @@
 
 	</div>
 </div>
+
+<button ng-click="character.toggleSearch()">Search</button>
+<my-iframe ng-if="character.searchOn" src='character.getSrc()'>

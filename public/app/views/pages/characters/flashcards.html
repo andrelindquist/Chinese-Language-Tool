@@ -1,5 +1,5 @@
 <a ng-href="/characters" class="btn btn-danger">Table View</a>
-<a ng-href="/quiz" class="btn btn-danger">Quiz Page</a>
+
 
 <div class="page-header">
 	<h1>
@@ -26,12 +26,16 @@
 			<p>{{ char.definition }}</p>
 			<p>{{ char.pronunciation }}</p>
 			<p ng-show="char.radicals">Radicals: {{ char.radicals }}</p>
+			<p ng-show="char.strokeCount">Category: {{ char.strokeCount }}</p>
 			<p ng-show="char.category">Category: {{ char.category }}</p>
 			<p ng-show="char.proficiency">Proficiency: {{ char.proficiency }}</p>
-			<p ng-show="char.date">Date Entered: {{ char.date }}</p>
+			<p ng-show="char.date">Date Entered: {{ char.date | date }}</p>
 			<p ng-show="char.other">Other: {{ char.other }}</p>
 			<a ng-href="/characters/{{ char._id }}" class="btn btn-danger">Edit</a>
 			<a href="#" ng-click="character.deleteCharacter(char._id)" class="btn btn-primary">Delete</a>
 		</div>
 	</div>
 </div>
+
+<button ng-click="character.toggleSearch()">Search</button>
+<my-iframe ng-if="character.searchOn" src='character.getSrc()'>
