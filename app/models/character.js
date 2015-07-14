@@ -10,7 +10,8 @@ var CharacterSchema = new Schema({
  	radicals: String,
  	category: String,
  	proficiency: String,
- 	date: String,
+ 	date: { type: Date, default: Date.now },
+ 	strokeCount: Number,
  	other: String
 });
 

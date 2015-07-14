@@ -3,7 +3,7 @@ angular.module('characterCtrl', ['characterService'])
 
 //character controller for the main page
 //inject character factory
-.controller('characterController', function(Character) {
+.controller('characterController', function(Character, $sce) {
 
 	var vm = this;
 
@@ -59,10 +59,18 @@ angular.module('characterCtrl', ['characterService'])
 		return vm.countResult;
 	}
 
+	vm.searchOn = false;
+	vm.toggleSearch = function() {
+		vm.searchOn = !vm.searchOn;
+	}
+
+	vm.getSrc = function() {
+	  return $sce.trustAsResourceUrl("http://www.cantonese.sheik.co.uk/scripts/wordsearch.php");
+	}
 })
 
 //controller applied to character creation page
-.controller('characterCreateController', function(Character) {
+.controller('characterCreateController', function(Character, $sce) {
 
 	var vm = this;
 
@@ -87,11 +95,20 @@ angular.module('characterCtrl', ['characterService'])
 		  	vm.message = data.message;
 		  });
 	};
+
+	vm.searchOn = false;
+	vm.toggleSearch = function() {
+		vm.searchOn = !vm.searchOn;
+	}
+
+	vm.getSrc = function() {
+	  return $sce.trustAsResourceUrl("http://www.cantonese.sheik.co.uk/scripts/wordsearch.php");
+	};
 })
 
 
 // controller applied to character edit page
-.controller('characterEditController', function($routeParams, Character) {
+.controller('characterEditController', function($routeParams, Character, $sce) {
 
 	var vm = this;
 
@@ -124,4 +141,12 @@ angular.module('characterCtrl', ['characterService'])
 			});
 	};
 
+		vm.searchOn = false;
+	vm.toggleSearch = function() {
+		vm.searchOn = !vm.searchOn;
+	}
+
+	vm.getSrc = function() {
+	  return $sce.trustAsResourceUrl("http://www.cantonese.sheik.co.uk/scripts/wordsearch.php");
+	}
 });

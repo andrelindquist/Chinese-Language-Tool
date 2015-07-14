@@ -40,10 +40,11 @@ apiRouter.route('/characters')
 		character.symbol = req.body.symbol;
 		character.definition = req.body.definition;
 	    character.pronunciation = req.body.pronunciation;
+	    character.strokeCount = req.body.strokeCount;
 		character.radicals = req.body.radicals;
 		character.category = req.body.category;
 		character.proficiency = req.body.proficiency;
-		character.date = req.body.date;
+		character.date = new Date();
 		character.other = req.body.other;
 
 		character.save(function(err) {
@@ -96,10 +97,11 @@ apiRouter.route('/characters/:character_id')
 			if (req.body.definition) character.definition = req.body.definition;
 			if (req.body.pronunciation) character.pronunciation = req.body.pronunciation;
 			if (req.body.radicals) character.radicals = req.body.radicals;
+			if (req.body.strokeCount) character.strokeCount = req.body.strokeCount;
 			if (req.body.category) character.category = req.body.category;
 			if (req.body.proficiency) character.proficiency = req.body.proficiency;
-			if (req.body.date) character.date = req.body.date;
-			if (req.body.other) character.other = req.body.other;
+			character.date = new Date();
+			character.other = req.body.other;
 
 
 
