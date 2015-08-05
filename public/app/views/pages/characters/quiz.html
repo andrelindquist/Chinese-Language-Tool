@@ -1,34 +1,38 @@
-<a ng-href="/flashcards" class="btn btn-danger">Flashcards Page</a>
-
-<div class="page-header">
-	<h1>
-		Quiz Page
-	</h1>
+<div class="quiz-dashboard">
 	<div>
-		Key<input ng-model="quiz.key" id="key"></input>
-		Value<input ng-model="quiz.value" id="value"></input>
-		Number<input ng-model="quiz.number" id="number"></input>
-
-		<button ng-click="quiz.makeQuiz(quiz.key, quiz.value, quiz.number)">makeQuiz{{quiz.questionObjectArray[1].question}}</button>
+		<h1 class="page-header">
+			Character Quiz Generator
+		</h1>
 	</div>
+
+	<ul ng-hide="quiz.quiz.quizActive">
+		<li class="quiz-li">Character Key <input class="quiz-input" ng-model="quiz.key" id="key"></input></li>
+		<li class="quiz-li">Key Value <input class="quiz-input" ng-model="quiz.value" id="value"></input></li>
+		<li class="quiz-li">Number of Questions <input class="quiz-input" ng-model="quiz.number" id="number" ng-init="quiz.number='5'"></input></li>
+
+		<li class="quiz-li"><button class="button-generate-quiz" ng-click="quiz.makeQuiz(quiz.key, quiz.value, quiz.number)">Generate Quiz!</button></li>
+	</ul>
 </div>
 
-<div ng-show="quiz.quiz.quizActive">Quiz Started!
-	<button ng-click="quiz.finishQuiz()">Done</button>
+ <div class="quiz-container" ng-show="quiz.quiz.quizActive">
+ 	<h1 class="quiz-question">{{quiz.quiz.currentQuestion.question}}</h1>
+ 	<ul>
+	 	<li><h3 class="quiz-answer-choice" ng-click="quiz.checkAnswer(quiz.quiz.currentQuestion.choices[0])" tabindex="1">{{quiz.quiz.currentQuestion.choices[0]}}</h3></li>
+	 	<li><h3 class="quiz-answer-choice" ng-click="quiz.checkAnswer(quiz.quiz.currentQuestion.choices[1])" tabindex="2">{{quiz.quiz.currentQuestion.choices[1]}}</h3></li>
+	 	<li><h3 class="quiz-answer-choice" ng-click="quiz.checkAnswer(quiz.quiz.currentQuestion.choices[2])" tabindex="3">{{quiz.quiz.currentQuestion.choices[2]}}</h3></li>
+	 	<li><h3 class="quiz-answer-choice" ng-click="quiz.checkAnswer(quiz.quiz.currentQuestion.choices[3])" tabindex="4">{{quiz.quiz.currentQuestion.choices[3]}}</h3></li>
+
+	 	<li>
+	 		<div class="quiz-nav-div">
+			 	<button class="quiz-previous-button" ng-click="quiz.previousQuestion()" ng-hide="quiz.quiz.questionIndex === 0">Previous</button>
+			 	<button class="quiz-next-button" ng-click="quiz.nextQuestion()" ng-hide="quiz.quiz.questionIndex === quiz.quiz.questions.length - 1">Next</button>
+			</div>
+		</li>
+		<li><button class="quiz-finish" ng-click="quiz.finishQuiz()">Done</button></li>
+	</ul>
+
 </div>
 
- <div ng-show="quiz.quiz.quizActive">
- 	<h1>{{quiz.quiz.currentQuestion.question}}</h1>
- 	<h3 ng-click="quiz.checkAnswer(quiz.quiz.currentQuestion.choices[0])">{{quiz.quiz.currentQuestion.choices[0]}}</h3>
- 	<h3 ng-click="quiz.checkAnswer(quiz.quiz.currentQuestion.choices[1])">{{quiz.quiz.currentQuestion.choices[1]}}</h3>
- 	<h3 ng-click="quiz.checkAnswer(quiz.quiz.currentQuestion.choices[2])">{{quiz.quiz.currentQuestion.choices[2]}}</h3>
- 	<h3 ng-click="quiz.checkAnswer(quiz.quiz.currentQuestion.choices[3])">{{quiz.quiz.currentQuestion.choices[3]}}</h3>
-
- 	<div>
-	 	<button ng-click="quiz.previousQuestion()" ng-hide="quiz.quiz.questionIndex === 0">Previous</button>
-	 	<button ng-click="quiz.nextQuestion()" ng-hide="quiz.quiz.questionIndex === quiz.quiz.questions.length - 1">Next</button>
-	</div>
-</div>
 
 <quiz-results ng-if="quiz.quiz.quizFinished" ng-model="quiz"></quiz-results>
 

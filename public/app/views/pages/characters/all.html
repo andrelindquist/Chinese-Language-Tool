@@ -40,16 +40,18 @@
 
 		<tr ng-show="showDetails">
 			<td>Radicals</td>
+			<td>Stroke Count</td>
 			<td>Category</td>
 			<td>Proficiency</td>
-			<td>Date</td>
+			<td>Date Added</td>
 			<td>Other</td>
 		</tr>
 		<tr ng-show="showDetails">
 			<td>{{ char.radicals }}</td>
+			<td>{{ char.strokeCount }}</td>
 			<td>{{ char.category }}</td>
 			<td>{{ char.proficiency }}</td>
-			<td>{{ char.date }}</td>
+			<td>{{ char.date | date }}</td>
 			<td>{{ char.other }}</td>
 		</tr>
 

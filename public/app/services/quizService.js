@@ -149,6 +149,7 @@ angular.module('quizService', [])
 		else {
 			console.log('You already answered this question!');
 		}
+		return 'correct';
 	}
 
 	quizFactory.finishQuiz = function() {
