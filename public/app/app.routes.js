@@ -8,6 +8,29 @@ angular.module('app.routes', ['ngRoute'])
   	  .when('/', {
   	  	templateUrl : 'app/views/pages/home.html'
   	  })
+          
+      // login page
+      .when('/login', {
+        templateUrl : 'app/views/pages/login.html',
+          controller  : 'mainController',
+            controllerAs: 'login'
+      })
+
+      // form to create a new user
+      // same view as edit page
+      .when('/users', {
+        templateUrl: 'app/views/pages/users/single.html',
+        controller: 'userCreateController',
+        controllerAs: 'user'
+      })
+
+      // page to edit a user
+      .when('/users/:user_id', {
+        templateUrl: 'app/views/pages/users/single.html',
+        controller: 'userEditController',
+        controllerAs: 'user'
+      })
+
 
   	  .when('/characters', {
   	  	templateUrl: 'app/views/pages/characters/all.html',

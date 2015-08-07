@@ -18,10 +18,14 @@
 	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.8/angular-route.js"></script>
 
 	<!-- controllers -->
+	<script src="app/controllers/mainCtrl.js"></script>
+	<script src="app/controllers/userCtrl.js"></script>
 	<script src="app/controllers/characterCtrl.js"></script>
 	<script src="app/controllers/quizCtrl.js"></script>
 
 	<!-- services -->
+	<script src="app/services/authService.js"></script>
+	<script src="app/services/userService.js"></script>
 	<script src="app/services/characterService.js"></script>
 	<script src="app/services/quizService.js"></script>
 
@@ -34,7 +38,7 @@
 	<script src="app/app.js"></script>
 </head>
 
-<body class="container" ng-app="characterApp" ng-controller="characterController as character">
+<body class="container" ng-app="characterApp" ng-controller="mainController as main">
 	<div class="jumbotron">
 		<h2 id="index-header-text"><a ng-href="/">Quiz App</a></h2>
 		<img id='jiji-image' src="assets/svg/jiji.svg">
@@ -42,6 +46,12 @@
 			<a ng-href="/flashcards" class="btn btn-primary">Flashcards Page</a>
 			<a ng-href="/quiz" class="btn btn-primary">Quiz Page</a>
 		</div>
+
+		<ul class="nav navbar-nav navbar-right">
+			<li ng-if="!main.loggedIn"><a href="/login">Login</a></li>
+			<li ng-if="main.loggedIn" class="navbar-text">Hello {{ main.user.username }}!</li>
+			<li ng-if="main.loggedIn"><a href="#" ng-click="main.doLogout()">Logout</a></li>
+		</ul>
 	</div>
 
 
