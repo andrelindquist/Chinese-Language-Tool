@@ -5,7 +5,9 @@ var bcrypt = require('bcrypt-nodejs');
 //user Schema
 var UserSchema = new Schema({
 	username: { type: String, required: true, index: { unique: true } },
-	password: { type: String, required: true, select: false }
+	password: { type: String, required: true, select: false },
+	dateJoined: {  type: Date, default: Date.now  },
+	vocabList: [{ symbol: String , proficiency: Number }]
 });
 
 //hash the password before the user is saved

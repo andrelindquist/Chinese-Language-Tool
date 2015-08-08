@@ -15,6 +15,7 @@ angular.module('mainCtrl', [])
 		Auth.getUser()
 			.then(function(data) {
 				vm.user = data.data;
+				console.log(vm.user);
 			});
 	});
 
@@ -27,11 +28,12 @@ angular.module('mainCtrl', [])
 			.success(function(data) {
 				//if a user successfully logs in, reidrect to users page
 				if (data.success) {
-					$location.path('/flashcards');
+					$location.path('/dashboard');
 				} else {
 					vm.error = data.message;
 				}
 			});
+
 	};
 
 	//function to handle logging out

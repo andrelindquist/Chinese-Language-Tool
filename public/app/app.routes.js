@@ -16,6 +16,13 @@ angular.module('app.routes', ['ngRoute'])
             controllerAs: 'login'
       })
 
+      //user dashboard
+      .when('/dashboard', {
+        templateUrl: 'app/views/pages/dashboard.html',
+        controller: 'mainController',
+        controllerAs: 'main'
+      })
+
       // form to create a new user
       // same view as edit page
       .when('/users', {
