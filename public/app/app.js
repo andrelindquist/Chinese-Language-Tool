@@ -5,6 +5,7 @@ angular.module('characterApp', [
 	'mainCtrl',
 	'userService',
 	'userCtrl',
+	'dashboardCtrl',
 	'characterService',
 	'characterCtrl',
 	'quizService',

@@ -7,7 +7,7 @@ var UserSchema = new Schema({
 	username: { type: String, required: true, index: { unique: true } },
 	password: { type: String, required: true, select: false },
 	dateJoined: {  type: Date, default: Date.now  },
-	vocabList: [{ symbol: String , proficiency: Number }]
+	vocabList: [{ symbol: String, proficiency: Number, nCorrect: Number, nWrong: Number }]
 });
 
 //hash the password before the user is saved

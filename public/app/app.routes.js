@@ -19,8 +19,8 @@ angular.module('app.routes', ['ngRoute'])
       //user dashboard
       .when('/dashboard', {
         templateUrl: 'app/views/pages/dashboard.html',
-        controller: 'mainController',
-        controllerAs: 'main'
+        controller: 'dashboardController',
+        controllerAs: 'dash'
       })
 
       // form to create a new user
