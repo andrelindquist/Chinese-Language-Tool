@@ -169,24 +169,43 @@ apiRouter.route('/users/:username')
 			if (err) {
 				res.send(err);
 			}
-				//set new user information if it exists
-				if (req.body.username) { user.username = req.body.username; }
-				if (req.body.password) { user.password = req.body.password; }
-				//save the user
-				user.save(function(err) {
-					if (err) {
-						res.send(err);
-					}
-					//return a message
-					res.json({ message: 'User updated!' });
-				});
+			//set new user information if it exists
+			if (req.body.username) { user.username = req.body.username; }
+			if (req.body.password) { user.password = req.body.password; }
+			//save the user
+			user.save(function(err) {
+				if (err) {
+					res.send(err);
+				}
+				//return a message
+				res.json({ message: 'User updated!' });
+			});
 		})
 	})
+
+
 
 	//api endpoint to get user information
 	apiRouter.get('/me', function(req, res) {
 		res.send(req.decoded);
 	});
+
+//route to update user's vocabList
+apiRouter.route('/vocablist/:username')
+	.put(function(req, res) {
+		User.findOne({username: req.params.username}, function(err, user) {
+			if (err) {
+				res.send(err);
+			}
+			user.vocabList = req.body;
+			user.save(function(err) {
+				if (err) {
+					res.send(err);
+				}
+				res.json({ message: 'User Data Updated!'});
+			});
+		})
+	})
 
 
 //on routes that end with /characters

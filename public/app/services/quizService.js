@@ -6,7 +6,6 @@ angular.module('quizService', [])
 	var quizFactory = {};
 
 	quizFactory.makeQuiz = function(characterData, key, value, number) {
-		console.log(characterData.count + "\n" + key + value + number);
 		var mq = this;
 
 		//shuffle function
@@ -57,6 +56,7 @@ angular.module('quizService', [])
 
 		function Question(charList, index) {
 			this.questionType = getRandomNo(2);
+			this.symbol = charList[index].symbol;
 			if (this.questionType === 1) {
 				this.question = charList[index].symbol;
 				this.answer = charList[index].definition;
@@ -107,7 +107,6 @@ angular.module('quizService', [])
 				this.correctCount = 0;
 				//Generate Question Objects; # depends on user request (or rawCharacterList if user requested # is > )
 				for (var j = 0; j < n; j += 1) {
-					console.log('hi');
 					this.questions.push(new Question(trimmedCharacterList, j));
 				}
 				this.currentQuestion = this.questions[this.questionIndex];
@@ -138,6 +137,7 @@ angular.module('quizService', [])
 		if (!currentQuestion.attemptedAnswer) {
 			currentQuestion.attemptedAnswer = inputAnswer;
 			if (inputAnswer === currentQuestion.answer) {
+				currentQuestion.correct = true;
 				quizFactory.quiz.correctCount += 1;
 				console.log('Correct!');
 			}
@@ -160,40 +160,3 @@ angular.module('quizService', [])
 
 	return quizFactory;
 });
-
-// 	vm.nextQuestion = function() {
-// 		if (vm.questionIndex < vm.questionObjectArray.length - 1) {
-// 			vm.questionIndex += 1;
-// 			vm.currentQuestion = vm.questionObjectArray[vm.questionIndex];
-// 		}
-// 	}
-
-// 	vm.previousQuestion = function() {
-// 		if (vm.questionIndex > 0) {
-// 			vm.questionIndex -= 1;
-// 			vm.currentQuestion = vm.questionObjectArray[vm.questionIndex];
-// 		}
-// 	}
-
-// 	vm.checkAnswer = function(inputAnswer) {
-// 		if (!vm.currentQuestion.attemptedAnswer) {
-// 			vm.currentQuestion.attemptedAnswer = inputAnswer;
-// 			if (inputAnswer === vm.currentQuestion.answer) {
-// 				vm.correctCount += 1;
-// 				console.log('correct!');
-// 			}
-// 			else {
-// 				console.log('wrong!');
-// 			}
-// 		}
-// 		else {
-// 			console.log('You already answered this question!');
-// 		}
-// 	}
-
-// 	vm.finishQuiz = function() {
-// 		vm.quizActive = false;
-// 		console.log(vm.correctCount);
-// 		vm.resultsShowing = true;
-// 	}
-// })

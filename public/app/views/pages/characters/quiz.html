@@ -36,4 +36,6 @@
 
 <quiz-results ng-if="quiz.quiz.quizFinished" ng-model="quiz"></quiz-results>
 
+<button ng-if="quiz.quiz.quizFinished && !quiz.logged" ng-click="quiz.logResults(quiz.quiz)">Log Results</button>
+
 
