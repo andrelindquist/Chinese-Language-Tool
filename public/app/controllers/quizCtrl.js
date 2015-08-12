@@ -21,6 +21,7 @@ angular.module('quizCtrl', ['quizService', 'characterService', 'userService'])
 		Quiz.makeQuiz(vm.characters, key, value, number);
 		vm.quiz = Quiz.quiz;
 		vm.logged = false;
+		console.log(vm.quiz);
 	}
 
 	vm.nextQuestion = function() {

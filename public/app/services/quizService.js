@@ -57,6 +57,7 @@ angular.module('quizService', [])
 		function Question(charList, index) {
 			this.questionType = getRandomNo(2);
 			this.symbol = charList[index].symbol;
+			this.pronunciation = charList[index].pronunciation;
 			if (this.questionType === 1) {
 				this.question = charList[index].symbol;
 				this.answer = charList[index].definition;
@@ -144,7 +145,6 @@ angular.module('quizService', [])
 			else {
 				console.log('Wrong!');
 			}
-			console.log(quizFactory.quiz.questionIndex);
 		}
 		else {
 			console.log('You already answered this question!');
@@ -155,7 +155,6 @@ angular.module('quizService', [])
 	quizFactory.finishQuiz = function() {
 		quizFactory.quiz.quizActive = false;
 		quizFactory.quiz.quizFinished = true;
-		console.log(quizFactory.quiz.correctCount);
 	}
 
 	return quizFactory;

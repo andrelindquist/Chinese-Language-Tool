@@ -16,14 +16,15 @@
 
  <div id="flash-card-wrapper" ng-show"character.characters">
  	<h4>Flash Cards</h4>
-	<div id="flash-card" class="col-md-2" ng-repeat="char in character.characters | filter:filterQuery | orderBy:sortQuery" ng-click="showDetails = ! showDetails">
+	<div id="flash-card" class="col-md-2" ng-repeat="char in character.characters | filter:filterQuery | orderBy:sortQuery" ng-click="showDetails = !showDetails">
 		<p id="symbol">{{ char.symbol }}</p>
 
-		<div id="details" ng-show="showDetails">
+		<div id="details" ng-if="showDetails">
 			<p>{{ char.definition }}</p>
 			<p>{{ char.pronunciation }}</p>
+			<p><audio-button data-ng-click="update(); play()" pronunciation="{{char.pronunciation}}" address="../../../assets/audio/"></audio-button></p>
 			<p ng-show="char.radicals">Radicals: {{ char.radicals }}</p>
-			<p ng-show="char.strokeCount">Category: {{ char.strokeCount }}</p>
+			<p ng-show="char.strokeCount">Stroke Count: {{ char.strokeCount }}</p>
 			<p ng-show="char.category">Category: {{ char.category }}</p>
 			<p ng-show="char.proficiency">Proficiency: {{ char.proficiency }}</p>
 			<p ng-show="char.date">Date Entered: {{ char.date | date }}</p>

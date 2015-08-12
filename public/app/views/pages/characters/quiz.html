@@ -15,7 +15,7 @@
 </div>
 
  <div class="quiz-container" ng-show="quiz.quiz.quizActive">
- 	<h1 class="quiz-question">{{quiz.quiz.currentQuestion.question}}</h1>
+ 	<audio-button data-ng-click="update(); play()" pronunciation="{{quiz.quiz.questions[quiz.quiz.questionIndex].pronunciation}}" address="../../../assets/audio/"><h1 class="quiz-question">{{quiz.quiz.currentQuestion.question}}</h1></audio-button>
  	<ul>
 	 	<li><h3 class="quiz-answer-choice" ng-click="quiz.checkAnswer(quiz.quiz.currentQuestion.choices[0])" tabindex="1">{{quiz.quiz.currentQuestion.choices[0]}}</h3></li>
 	 	<li><h3 class="quiz-answer-choice" ng-click="quiz.checkAnswer(quiz.quiz.currentQuestion.choices[1])" tabindex="2">{{quiz.quiz.currentQuestion.choices[1]}}</h3></li>
@@ -33,9 +33,9 @@
 
 </div>
 
-
+<button ng-if="quiz.quiz.quizFinished && !quiz.logged" ng-click="quiz.logResults(quiz.quiz)">Log Results</button>
 <quiz-results ng-if="quiz.quiz.quizFinished" ng-model="quiz"></quiz-results>
 
-<button ng-if="quiz.quiz.quizFinished && !quiz.logged" ng-click="quiz.logResults(quiz.quiz)">Log Results</button>
+
 
 

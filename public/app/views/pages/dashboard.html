@@ -1,2 +1,22 @@
-<p>{{dash.user.username}} </p>
+<p>Welcome {{dash.user.username}} </p>
 <p>{{dash.user.dateJoined}}</p>
+<table>
+	<thead>
+		<tr>
+			<th>Symbol</th>
+			<th>Proficiency</th>
+			<th>Correct</th>
+			<th>Wrong</th>
+		</tr>
+	</thead>
+	
+	<tbody>
+		<tr ng-repeat="char in dash.user.vocabList">
+			<td>{{ char.symbol }}</td>
+			<td>{{ char.proficiency }}</td>
+			<td>{{ char.nCorrect }}</td>
+			<td>{{ char.nWrong }}</td>
+		</tr>
+	</tbody>
+</table>
+	

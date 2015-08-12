@@ -11,7 +11,8 @@ angular.module('characterApp', [
 	'quizService',
 	'quizCtrl',
     'resultsDirective',
-    'iframeDirective'
+    'iframeDirective',
+    'audioDirective'
 	])
 
 //application configuration to integrate token into requests

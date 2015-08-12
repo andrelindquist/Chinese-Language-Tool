@@ -19,6 +19,13 @@ angular.module('characterCtrl', ['characterService'])
 
 	  	//bind the users that come back to vm.characters
 	  	vm.characters = data;
+
+	  	//get list of all pronunciations
+	  	// var proList = [];
+	  	// for (var i = 0; i < vm.characters.length; i += 1) {
+	  	// 	proList.push(vm.characters[i].pronunciation);
+	  	// }
+	  	// console.log(proList);
 	  });
 
 	//function to delete a character
