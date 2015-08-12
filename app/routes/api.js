@@ -224,6 +224,8 @@ apiRouter.route('/characters')
 	//create new character entry using POST
 	.post(isAuthenticated, function(req, res) {
 
+		console.log(req.body);
+
 		//create instance of Character model
 		var character = new Character();
 		//set information from the request
@@ -234,8 +236,8 @@ apiRouter.route('/characters')
 		character.radicals = req.body.radicals;
 		character.category = req.body.category;
 		character.proficiency = req.body.proficiency;
-		character.date = new Date();
-		character.other = req.body.other;
+		character.dateSubmitted = new Date();
+		character.submittedBy = req.body.username;
 
 		character.save(function(err) {
 			if (err) {
@@ -282,8 +284,8 @@ apiRouter.route('/characters/:character_id')
 			if (req.body.strokeCount) character.strokeCount = req.body.strokeCount;
 			if (req.body.category) character.category = req.body.category;
 			if (req.body.proficiency) character.proficiency = req.body.proficiency;
-			character.date = new Date();
-			character.other = req.body.other;
+			character.dateEdited = new Date();
+			character.editedBy = req.body.username;
 
 
 

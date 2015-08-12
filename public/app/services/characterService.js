@@ -16,12 +16,14 @@ angular.module('characterService', [])
 	};
 
 	//enter a new character
-	characterFactory.create = function(characterData) {
+	characterFactory.create = function(characterData, username) {
+		characterData.username = username;
 		return $http.post('/api/characters/', characterData);
 	};
 
 	//update a character
-	characterFactory.update = function(id, characterData) {
+	characterFactory.update = function(id, characterData, username) {
+		characterData.username = username;
 		return $http.put('/api/characters/' + id, characterData);
 	};
 

@@ -7,15 +7,9 @@ angular.module('characterCtrl', ['characterService'])
 
 	var vm = this;
 
-	//set a processing variable to show loading things
-	vm.processing = true;
-
 	//grab all the characters at page load
 	Character.all()
 	  .success(function(data) {
-
-	  	//when all characters come back, remove the processing variable
-	  	vm.processing = false;
 
 	  	//bind the users that come back to vm.characters
 	  	vm.characters = data;
@@ -77,7 +71,7 @@ angular.module('characterCtrl', ['characterService'])
 })
 
 //controller applied to character creation page
-.controller('characterCreateController', function(Character, $sce) {
+.controller('characterCreateController', function(Character, $sce, Auth) {
 
 	var vm = this;
 
@@ -87,20 +81,26 @@ angular.module('characterCtrl', ['characterService'])
 
 	//function to create character
 	vm.saveCharacter = function() {
-		vm.processing = true;
 
-		//clear the message
-		vm.message = '';
+		Auth.getUser()
+			.then(function(data) {
+				vm.user = data.data;
+
+				vm.username = vm.user.username;
 
 		//use the create function in the characterService
-		Character.create(vm.characterData)
-		  .success(function(data) {
-		  	vm.processing = false;
+				Character.create(vm.characterData, vm.username)
+				  .success(function(data) {
 
-		  	//clear the form
-		  	vm.characterData = {};
-		  	vm.message = data.message;
-		  });
+				  	//clear the form
+				  	vm.characterData = {};
+				  	vm.message = data.message;
+				  });
+
+			})
+		
+		//clear the message
+		vm.message = '';
 	};
 
 	vm.searchOn = false;
@@ -115,7 +115,7 @@ angular.module('characterCtrl', ['characterService'])
 
 
 // controller applied to character edit page
-.controller('characterEditController', function($routeParams, Character, $sce) {
+.controller('characterEditController', function($routeParams, Character, $sce, Auth) {
 
 	var vm = this;
 
@@ -132,20 +132,27 @@ angular.module('characterCtrl', ['characterService'])
 
 	// function to save the character
 	vm.saveCharacter = function() {
-		vm.processing = true;
 		vm.message = '';
 
-		// call the characterService function to update 
-		Character.update($routeParams.character_id, vm.characterData)
-			.success(function(data) {
-				vm.processing = false;
 
-				// clear the form
-				vm.characterData = {};
+		Auth.getUser()
+			.then(function(data) {
+				vm.user = data.data;
 
-				// bind the message from our API to vm.message
-				vm.message = data.message;
+				vm.username = vm.user.username;
+
+			// call the characterService function to update 
+			Character.update($routeParams.character_id, vm.characterData, vm.username)
+				.success(function(data) {
+
+					// clear the form
+					vm.characterData = {};
+					// bind the message from our API to vm.message
+					vm.message = data.message;
+
+				});
 			});
+
 	};
 
 		vm.searchOn = false;

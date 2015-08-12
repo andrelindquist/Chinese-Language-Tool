@@ -10,9 +10,11 @@ var CharacterSchema = new Schema({
  	radicals: String,
  	category: String,
  	proficiency: String,
- 	date: { type: Date, default: Date.now },
- 	strokeCount: Number,
- 	other: String
+ 	dateSubmitted: { type: Date, default: Date.now },
+ 	dateEdited: Date,
+ 	submittedBy: String,
+ 	editedBy: String,
+ 	strokeCount: Number
 });
 
 module.exports = mongoose.model('Character', CharacterSchema);
