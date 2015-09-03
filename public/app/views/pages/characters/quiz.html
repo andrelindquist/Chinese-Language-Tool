@@ -1,11 +1,9 @@
-<div class="quiz-dashboard">
+<div class="quiz-dashboard" ng-hide="quiz.quiz.quizActive || quiz.quiz.quizFinished">
 	<div>
-		<h1 class="page-header">
-			Character Quiz Generator
-		</h1>
+		<h2 class="quiz-header">Character Quiz Generator</h2>
 	</div>
 
-	<ul ng-hide="quiz.quiz.quizActive">
+	<ul class="quiz-input-list">
 		<li class="quiz-li">Character Key <input class="quiz-input" ng-model="quiz.key" id="key"></input></li>
 		<li class="quiz-li">Key Value <input class="quiz-input" ng-model="quiz.value" id="value"></input></li>
 		<li class="quiz-li">Number of Questions <input class="quiz-input" ng-model="quiz.number" id="number" ng-init="quiz.number='5'"></input></li>
@@ -15,8 +13,8 @@
 </div>
 
  <div class="quiz-container" ng-show="quiz.quiz.quizActive">
- 	<audio-button data-ng-click="update(); play()" pronunciation="{{quiz.quiz.questions[quiz.quiz.questionIndex].pronunciation}}" address="../../../assets/audio/"><h1 class="quiz-question">{{quiz.quiz.currentQuestion.question}}</h1></audio-button>
- 	<ul>
+ 	<audio-button class="audio" data-ng-click="update(); quizPlay()" attempted="{{quiz.quiz.questions[quiz.quiz.questionIndex].attemptedAnswer}}" pronunciation="{{quiz.quiz.questions[quiz.quiz.questionIndex].pronunciation}}" address="http://humanum.arts.cuhk.edu.hk/Lexis/Canton/sound/"><h1 class="quiz-question" ng-class="{'english-question': quiz.quiz.questions[quiz.quiz.questionIndex].questionType == 2}">{{quiz.quiz.currentQuestion.question}}</h1></audio-button>   <!--When using local audio files: address="../../../assets/audio/"-->
+ 	<ul class="quiz-answer-choices" ng-class="{'english-answers': quiz.quiz.questions[quiz.quiz.questionIndex].questionType == 1}">
 	 	<li><h3 class="quiz-answer-choice" ng-click="quiz.checkAnswer(quiz.quiz.currentQuestion.choices[0])" tabindex="1">{{quiz.quiz.currentQuestion.choices[0]}}</h3></li>
 	 	<li><h3 class="quiz-answer-choice" ng-click="quiz.checkAnswer(quiz.quiz.currentQuestion.choices[1])" tabindex="2">{{quiz.quiz.currentQuestion.choices[1]}}</h3></li>
 	 	<li><h3 class="quiz-answer-choice" ng-click="quiz.checkAnswer(quiz.quiz.currentQuestion.choices[2])" tabindex="3">{{quiz.quiz.currentQuestion.choices[2]}}</h3></li>
@@ -33,9 +31,8 @@
 
 </div>
 
-<button ng-if="quiz.quiz.quizFinished && !quiz.logged" ng-click="quiz.logResults(quiz.quiz)">Log Results</button>
 <quiz-results ng-if="quiz.quiz.quizFinished" ng-model="quiz"></quiz-results>
-
+<button class="btn btn-primary" id="btn-log-results" ng-if="quiz.quiz.quizFinished && !quiz.logged" ng-click="quiz.logResults(quiz.quiz)">Log Results</button>
 
 
 

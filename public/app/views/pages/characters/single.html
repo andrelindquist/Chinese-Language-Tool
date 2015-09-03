@@ -54,21 +54,12 @@
 		</div>
 	</div>
 
-	<div class="form-group">
-		<label class="col-sm-2 control-label">Other</label>
-		<div class="col-sm-6">
-			<input type="text" class="form-control" ng-model="character.characterData.other">
-		</div>
-	</div>
-
-
 
 	<div class="form-group">
 		<div class="col-sm-offset-2 col-sm-6">
-			<button type="submit" class="btn btn-success btn-lg btn-block" ng-if="character.type == 'create'">Create Character</button>
+			<button type="submit" class="btn btn-success btn-lg btn-block" ng-if="character.type == 'create'">Enter Character</button>
 			<button type="submit" class="btn btn-success btn-lg btn-block" ng-if="character.type == 'edit'">Update Character</button>
 		</div>
-		<a ng-href="/flashcards/" class="btn btn-danger">Characters Page</a>
 	</div>
 
 </form>

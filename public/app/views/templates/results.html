@@ -2,9 +2,8 @@
 	<h2 class="quiz-summary-header">You answered {{ngModel.quiz.correctCount}} out of {{ngModel.quiz.questions.length}} questions correctly.</h2>
 
 	<ul class="quiz-summary-question" ng-repeat="question in ngModel.quiz.questions">
-		<li><h1>{{question.question}}</h1></li>
-		<li><h2 ng-repeat="choice in question.choices" ng-class="{'quiz-answer': choice == question.answer, 'quiz-attempted': choice == question.attemptedAnswer}">{{choice}}<span ng-if="choice == question.answer || choice == question.attemptedAnswer"></span></h2></li>
+		<li><h1 ng-class="{'english-question': question.questionType == 2}">{{question.question}}</h1></li>
+		<li><h3 ng-repeat="choice in question.choices" class="quiz-summary-choice" ng-class="{'quiz-answer': choice == question.answer, 'quiz-attempted': choice == question.attemptedAnswer, 'english-answers': question.questionType == 1}">{{choice}}<span ng-if="choice == question.answer || choice == question.attemptedAnswer"></span></h3></li>
 	</ul>
-
-	<button id="close-results-button" class="btn btn-primary" ng-click="ngModel.quiz.quizFinished=false">Close Quiz Summary</button>
 </div>
+<button id="btn-close-results" class="btn btn-primary" ng-click="ngModel.quiz.quizFinished = false">Close Summary</button>

@@ -1,4 +1,3 @@
-
 angular.module('resultsDirective', []).
 directive('quizResults', function() {
   return {

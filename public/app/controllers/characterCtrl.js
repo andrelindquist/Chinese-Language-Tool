@@ -14,7 +14,7 @@ angular.module('characterCtrl', ['characterService'])
 	  	//bind the users that come back to vm.characters
 	  	vm.characters = data;
 
-	  	//get list of all pronunciations
+////////get list of all pronunciations for adding audio files
 	  	// var proList = [];
 	  	// for (var i = 0; i < vm.characters.length; i += 1) {
 	  	// 	proList.push(vm.characters[i].pronunciation);
@@ -41,24 +41,25 @@ angular.module('characterCtrl', ['characterService'])
 			});
 	};
 
-//Added 15/6/2015 - used on Flashcards page-
+//Added 15/6/2015 - used on Flashcards page- /////// 8/16/2015 Commented out- may add back in /// also need to add search function
 
-	vm.getData = function(key, value) {
-		var count = 0;
-		for (var i = 0; i < vm.characters.length; i += 1) {
-			if (vm.characters[i][key] == value) {
-				count += 1;
-			}
-		}
-		vm.countResult = {calculated: true,
-						  count: count,
-						  key: key,
-						  value: value,
-						  message: "There are " + count + " characters in the database with a key of " + key + ", matching " + value + "."
-						}
-		console.log('Key: ' + key + '| Value: ' + value + ' ' + count);
-		return vm.countResult;
-	}
+
+	// vm.getData = function(key, value) {
+	// 	var count = 0;
+	// 	for (var i = 0; i < vm.characters.length; i += 1) {
+	// 		if (vm.characters[i][key] == value) {
+	// 			count += 1;
+	// 		}
+	// 	}
+	// 	vm.countResult = {calculated: true,
+	// 					  count: count,
+	// 					  key: key,
+	// 					  value: value,
+	// 					  message: "There are " + count + " characters in the database with a key of " + key + ", matching " + value + "."
+	// 					}
+	// 	console.log('Key: ' + key + '| Value: ' + value + ' ' + count);
+	// 	return vm.countResult;
+	// }
 
 	vm.searchOn = false;
 	vm.toggleSearch = function() {
@@ -155,7 +156,7 @@ angular.module('characterCtrl', ['characterService'])
 
 	};
 
-		vm.searchOn = false;
+	vm.searchOn = false;
 	vm.toggleSearch = function() {
 		vm.searchOn = !vm.searchOn;
 	}
@@ -163,4 +164,7 @@ angular.module('characterCtrl', ['characterService'])
 	vm.getSrc = function() {
 	  return $sce.trustAsResourceUrl("http://www.cantonese.sheik.co.uk/scripts/wordsearch.php");
 	}
+
+	//modal logic
+	vm.modalOn = false;
 });

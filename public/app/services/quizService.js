@@ -28,6 +28,7 @@ angular.module('quizService', [])
 			return Math.floor((Math.random() * x) + 1)
 		}
 
+		//Limits character pool to the given value - if no key or value paramters are given, character pool may include any character
 		var rawCharacterList = [];
 	  	for (var i = 0; i < characterData.length; i += 1) {
 			if (characterData[i][key] == value) {

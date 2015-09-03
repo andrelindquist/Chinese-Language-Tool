@@ -16,7 +16,7 @@ directive('audioButton', [function () {
                 audio = new Audio(audioSrc);
             }
 
-            scope.play = function () {
+            scope.play = function() {
                 if (audio.paused) {
                     audio.play();
                 } else {
@@ -24,10 +24,18 @@ directive('audioButton', [function () {
                 }
             };
 
-            element.css({
-                width: '100px',
-                height: '100px', 
-                backgroundColor: '#aaa',
+            scope.quizPlay = function() {
+                if (attrs.attempted) {
+                    if (audio.paused) {
+                        audio.play();
+                    } else {
+                        audio.pause();
+                    }
+                }
+            };
+
+            element.css({ 
+                backgroundColor: '#bfdfff',
                 display: 'inline-block'
             });
         }

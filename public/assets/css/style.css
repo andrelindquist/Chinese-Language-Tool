@@ -1,3 +1,5 @@
+/* Naviagtion & Site Header */
+
 a:hover, a:visited, a:link, a:active
 {
     text-decoration: none;
@@ -26,21 +28,58 @@ ul {
 	margin-top: 1em;
 }
 
+.nav-link {
+	display: inline;
+}
+
+#nav-greeting, #nav-logout {
+	float: right;
+	margin: 0 2px;
+}
+
+#nav-logout {
+	margin-right: 5%;
+}
+
 /**  Flash Cards View  **/
 
 #flash-card {
-	border: 2px #6666aa solid;
-	border-radius: .5em;
+	border: 2px #afafcf solid;
+	border-radius: .4em;
+	margin: 1px 2px;
+	width: 8%;
+	float: left;
 }
 
 #flash-card #symbol {
 	font-size: 3em;
 	text-align: center;
+	margin: 0;
+	cursor: pointer;
 }
 
 .page-header {
 	margin: 0;
 	border: 0;
+}
+
+.flash-dash-choice {
+	display: block;
+}
+
+#add-character {
+	font-weight: 600;
+	color: #317749;
+}
+
+#details {
+	background: #fff;
+	position: absolute;
+	z-index: 10000;
+}
+
+#flash-pronounciation {
+
 }
 
 /**  Quiz View  **/
@@ -51,6 +90,10 @@ ul {
 	padding: 1em;
 	border-radius: 5px;
 	width: 60%;
+}
+
+.quiz-header {
+	margin: 10px 0;
 }
 
 .quiz-li {
@@ -84,10 +127,10 @@ ul {
 }
 
 .quiz-question {
-	margin-right: 45%;
 	text-align: center;
 	font-size: 3.5em;
 	font-weight: 600;
+	width: 100%;
 }
 
 .quiz-answer-choice {
@@ -95,6 +138,14 @@ ul {
 	font-size: 2.1em;
 	font-weight: 400;
 	cursor: pointer;
+}
+
+.english-question {
+	font-size: 2.3em;
+}
+
+.english-answers .quiz-answer-choice {
+	font-size: 1.8em;
 }
 
 .quiz-answer-choice:hover {
@@ -138,6 +189,29 @@ ul {
 	font-size: 3.5em;
 }
 
+.quiz-summary-question .english-question {
+	font-size: 2.3em;
+}
+
+.quiz-summary-choice.english-answers {
+	font-size: 1.8em;
+}
+
+#close-results-button {
+	margin-right: 10%;
+	float: right;
+}
+
+#btn-close-results {
+	float: right;
+	margin-right: 70%;
+}
+
+#btn-log-results {
+	float: left;
+}
+
+/* Results image sprite */
 .quiz-summary-question span {
 	background: url(../images/quiz-sprites.png);
 	height: 32px;
@@ -159,7 +233,109 @@ ul {
 	background-position: 0 0;
 }
 
-#close-results-button {
-	margin-right: 10%;
-	float: right;
+
+/*audio directive*/
+.audio {
+	height: 100%;
+	width: 100%;
+	cursor: pointer;
 }
+
+
+
+/************ Media Queries ***********/
+/* Smartphones (portrait and landscape) ----------- */
+@media screen and (max-width: 480px) {
+	/* Index Page Header */
+	#nav-greeting {
+		display: none;
+	}
+
+	.jumbotron {
+		padding: 5px;
+	}
+
+	/*Flash Cards Page*/
+
+	#flash-card {
+		width: 18%;
+	}
+
+	#flash-card #symbol {
+	font-size: 2.5em;
+	}
+
+	#add-character {
+		padding: 3px;
+		margin: 3px;
+	}
+
+	/* Quiz Page */
+	.quiz-dashboard, .quiz-container, .quiz-summary-container {
+		width: 100%;
+	}
+
+	.quiz-header {
+		font-size: 1.5em; 
+		margin-top: 0;
+	}
+
+	.quiz-input-list, .quiz-answer-choices{
+		padding-left: 0;
+	}
+
+	.quiz-answer-choice {
+		margin-left: 40%;
+	}
+
+/*	.quiz-audio {
+		margin-left: 30%;
+	}*/
+
+	.quiz-answer-choice {
+		font-size: 2em;
+		margin-right: 0;
+	}
+
+	.button-generate-quiz {
+		margin: 0 auto;
+	}
+	/*Quiz Results Template*/
+	.quiz-summary-header {
+		margin: 0;
+		font-size: 1.5em;
+	}
+
+	.quiz-summary-question {
+		margin-top: 0;
+		padding-left: 0;
+		font-size: 0.75em;
+	}
+
+	.quiz-summary-choice {
+		margin: 6px 0;
+		font-size: 2.8em;	
+	}
+
+	.english-answers .quiz-answer-choice {
+		font-size: 1.5em;
+		margin-left: 10%;
+	}
+
+	#btn-close-results {
+		margin-right: 0;
+	}
+}
+
+/* Tablets etc */
+ @media screen and (min-width:480px) and (max-width:900px) {
+	/*Flash Cards Page*/
+
+ 		#flash-card {
+		width: 12%;
+	}
+
+	#btn-close-results {
+		margin-right: 40%;
+	}
+ }

@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Angular App</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Quiz App</title>
 
 	<!-- FOR ANGULAR ROUTING -->
 	<base href="/">
@@ -45,16 +46,12 @@
 		<h2 id="index-header-text"><a ng-href="/">Quiz App</a></h2>
 		<img id='jiji-image' src="assets/svg/jiji.svg">
 		<div class="navigation">
-			<a ng-href="/flashcards" class="btn btn-primary">Flashcards Page</a>
-			<a ng-href="/quiz" class="btn btn-primary">Quiz Page</a>
+			<a ng-href="/flashcards" class="btn btn-primary nav-link">Flashcards</a>
+			<a ng-href="/quiz" class="btn btn-primary nav-link">Quiz</a>
+			<a href="/login" ng-if="!main.loggedIn">Login</a>
+			<a id="nav-greeting" ng-if="main.loggedIn" ng-href='/dashboard'>Hello {{ main.user.username }}!</a>
+			<a id="nav-logout" href="#" ng-if="main.loggedIn" ng-click="main.doLogout()">Logout</a>
 		</div>
-
-		<ul class="nav navbar-nav navbar-right">
-			<li ng-if="!main.loggedIn"><a href="/login">Login</a></li>
-			<li ng-if="!main.loggedIn"><a ng-href="/users" class="btn btn-success">Sign Up</a></li>
-			<li ng-if="main.loggedIn" class="navbar-text">Hello <a ng-href='/dashboard'>{{ main.user.username }}!</a></li>
-			<li ng-if="main.loggedIn"><a href="#" ng-click="main.doLogout()">Logout</a></li>
-		</ul>
 	</div>
 
 

@@ -21,7 +21,6 @@ angular.module('quizCtrl', ['quizService', 'characterService', 'userService'])
 		Quiz.makeQuiz(vm.characters, key, value, number);
 		vm.quiz = Quiz.quiz;
 		vm.logged = false;
-		console.log(vm.quiz);
 	}
 
 	vm.nextQuestion = function() {
@@ -38,13 +37,12 @@ angular.module('quizCtrl', ['quizService', 'characterService', 'userService'])
 
 	vm.finishQuiz = function() {
 		Quiz.finishQuiz();
-		console.log(vm.quiz);
 	}
 	
 	vm.logResults = function(quiz) {
 		vm.logged = true;
 
-			Auth.getUser()
+		Auth.getUser()
 		.then(function(data) {
 			vm.user = data.data;
 
@@ -57,7 +55,7 @@ angular.module('quizCtrl', ['quizService', 'characterService', 'userService'])
 			  	vm.user = data;
 			  	//Call function from service to PUT new vocabList
 			  	// console.log(User.logResults(vm.user.vocabList, quiz));
-			  	console.log(vm.username);
+			  	console.log(vm.user);
 			  	User.updateVocabList(vm.user.vocabList, quiz, vm.username);
 			  });    	
 		});

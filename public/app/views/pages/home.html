@@ -1,7 +1,9 @@
 <div ng-if="!main.loggedIn">
-	<p>Login!</p>
 	<a href="/login" class="btn btn-primary">Login</a>
+	<div ng-if="!main.loggedIn"><a ng-href="/users" class="btn btn-success">Sign Up</a></div>
 </div>
+
+
 
 <div ng-if="main.loggedIn">
 	<h3>Welcome {{main.user.username}}</h3>
