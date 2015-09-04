@@ -51,7 +51,7 @@ angular.module('userService', [])
 			for (var m = 0; m < vocabList.length; m += 1) {
 				if (quiz.questions[n].symbol == vocabList[m].symbol) {
 					if (quiz.questions[n].correct) {
-						if (vocabList[m].nCorrect >= 5) {
+						if (vocabList[m].nCorrect >= 4) {
 							vocabList[m].proficiency += 1;
 							vocabList[m].nCorrect = 0;
 						}
