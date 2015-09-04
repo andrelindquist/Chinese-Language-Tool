@@ -43,7 +43,17 @@
 	<div class="form-group">
 		<label class="col-sm-2 control-label">Category</label>
 		<div class="col-sm-6">
-			<input type="text" class="form-control" ng-model="character.characterData.category">
+<!-- 			<input type="text" class="form-control" ng-model="character.characterData.category"> -->
+			<select ng-model="character.characterData.category">
+				<option value="Animals">Animals</option>
+				<option value="Colors">Colors</option>
+				<option value="Numbers">Numbers</option>
+				<option value="Emotions">Emotions</option>
+				<option value="Actions">Actions</option>
+				<option value="Technology">Technology</option>
+				<option value="People">People</option>
+				<option value="Other">Other</option>
+			</select>
 		</div>
 	</div>
 
