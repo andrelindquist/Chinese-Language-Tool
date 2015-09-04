@@ -17,10 +17,17 @@ angular.module('quizCtrl', ['quizService', 'characterService', 'userService'])
 	  	vm.characters = data;
 	  });
 
+	vm.userCriteria = [];
+	vm.userCharacters = [];
+
 	vm.makeQuiz = function(key, value, number) {
-		Quiz.makeQuiz(vm.characters, key, value, number);
+		if (vm.userCharacters == false) {
+			vm.userCharacters = vm.characters;
+		}
+		Quiz.makeQuiz(vm.characters, vm.userCharacters, key, value, number);
 		vm.quiz = Quiz.quiz;
 		vm.logged = false;
+		vm.userCharacters = [];
 	}
 
 	vm.nextQuestion = function() {
@@ -65,8 +72,8 @@ angular.module('quizCtrl', ['quizService', 'characterService', 'userService'])
 	//function to generate modified charData based on user's vocabList and quiz choice
 	vm.makeUserCriteria = function(quizType) { //quizType paramter chosen from quiz dropdown menu
 		//use a switch statement based on quizType to select a function to generate userCriteria array
-		var userCriteria = [];
-
+		vm.userCriteria = [];
+		vm.userCharacters = [];
 		Auth.getUser()
 		.then(function(data) {
 			vm.user = data.data;
@@ -84,7 +91,7 @@ angular.module('quizCtrl', ['quizService', 'characterService', 'userService'])
 			  		case "retry":
 				  	for (var i = 0; i < vm.user.vocabList.length; i += 1) {
 				  		if (vm.user.vocabList[i].nCorrect <= vm.user.vocabList[i].nWrong && vm.user.vocabList[i].nWrong > 0) {
-				  			userCriteria.push(vm.user.vocabList[i]);
+				  			vm.userCriteria.push(vm.user.vocabList[i]);
 				  		}
 				  	}
 			  		break;
@@ -98,7 +105,7 @@ angular.module('quizCtrl', ['quizService', 'characterService', 'userService'])
 				  			}
 				  		}
 				  		if (charInBoth == false) {
-				  			userCriteria.push(vm.characters[i]);
+				  			vm.userCriteria.push(vm.characters[i]);
 				  		}
 				  	}
 				  	break;
@@ -106,7 +113,7 @@ angular.module('quizCtrl', ['quizService', 'characterService', 'userService'])
 				  	case "reviewStageI":
 				  	for (var i = 0; i < vm.user.vocabList.length; i += 1) {
 				  		if (vm.user.vocabList[i].nCorrect >= 1 && vm.user.vocabList[i].nCorrect <= 2) {
-				  			userCriteria.push(vm.user.vocabList[i]);
+				  			vm.userCriteria.push(vm.user.vocabList[i]);
 				  		}
 				  	}
 				  	break;
@@ -114,7 +121,7 @@ angular.module('quizCtrl', ['quizService', 'characterService', 'userService'])
 				  	case "reviewStageII":
 				  	for (var i = 0; i < vm.user.vocabList.length; i += 1) {
 				  		if (vm.user.vocabList[i].nCorrect >= 2 && vm.user.vocabList[i].proficiency == 1) {
-				  			userCriteria.push(vm.user.vocabList[i]);
+				  			vm.userCriteria.push(vm.user.vocabList[i]);
 				  		}
 				  	}
 				  	break;
@@ -122,18 +129,25 @@ angular.module('quizCtrl', ['quizService', 'characterService', 'userService'])
 				  	case "reviewStageIII":
 				  	for (var i = 0; i < vm.user.vocabList.length; i += 1) {
 				  		if (vm.user.vocabList[i].proficiency > 1) {
-				  			userCriteria.push(vm.user.vocabList[i]);
+				  			vm.userCriteria.push(vm.user.vocabList[i]);
 				  		}
 				  	}
 				  	break;
 			  	}
-			  	console.log(userCriteria);
+			  	console.log(vm.userCriteria);
+			  	//Following loops are used to generate character objects able to be used by quiz (objects from user.vocabList do not contain definition, etc...)
+	  			for (var i = 0; i < vm.characters.length; i += 1) {
+					for (var j = 0; j < vm.userCriteria.length; j += 1) {
+						if (vm.characters[i].symbol == vm.userCriteria[j].symbol) {
+							vm.userCharacters.push(vm.characters[i]);
+						}
+					}
+				}
+				console.log(vm.userCharacters);
 			  });    	
 		});
+
 	}
-
-	vm.makeUserCriteria('reviewStageI');
-
 	vm.logged = false;
 });
 

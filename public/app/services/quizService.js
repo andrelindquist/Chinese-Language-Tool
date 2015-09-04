@@ -5,7 +5,7 @@ angular.module('quizService', [])
 	//create a new Quiz object
 	var quizFactory = {};
 
-	quizFactory.makeQuiz = function(characterData, key, value, number) {
+	quizFactory.makeQuiz = function(characterData, userCharacters, key, value, number) {
 		var mq = this;
 
 		//shuffle function
@@ -30,9 +30,9 @@ angular.module('quizService', [])
 
 		//Limits character pool to the given value - if no key or value paramters are given, character pool may include any character
 		var rawCharacterList = [];
-	  	for (var i = 0; i < characterData.length; i += 1) {
-			if (characterData[i][key] == value) {
-				rawCharacterList.push(characterData[i]);
+	  	for (var i = 0; i < userCharacters.length; i += 1) {
+			if (userCharacters[i][key] == value) {
+				rawCharacterList.push(userCharacters[i]);
 			}
 		}
 

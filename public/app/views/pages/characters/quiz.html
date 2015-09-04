@@ -8,6 +8,17 @@
 		<li class="quiz-li">Key Value <input class="quiz-input" ng-model="quiz.value" id="value"></input></li>
 		<li class="quiz-li">Number of Questions <input class="quiz-input" ng-model="quiz.number" id="number" ng-init="quiz.number='5'"></input></li>
 
+		<div tabindex="0" class="onclick-menu">
+		    <ul class="onclick-menu-content">
+		        <li><button ng-click="quiz.makeUserCriteria('new')">New</button></li>
+		        <li><button ng-click="quiz.makeUserCriteria('reviewStageI')">Review I</button></li>
+		        <li><button ng-click="quiz.makeUserCriteria('reviewStageII')">Review II</button></li>
+		        <li><button ng-click="quiz.makeUserCriteria('reviewStageIII')">Review III</button></li>
+		        <li><button ng-click="quiz.makeUserCriteria('retry')">Retry</button></li>
+		        <li><button ng-click="quiz.userCharacters = []">All</button></li>
+		    </ul>
+		</div>
+
 		<li class="quiz-li"><button class="button-generate-quiz" ng-click="quiz.makeQuiz(quiz.key, quiz.value, quiz.number)">Generate Quiz!</button></li>
 	</ul>
 </div>
