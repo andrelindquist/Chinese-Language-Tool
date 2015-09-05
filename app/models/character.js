@@ -9,7 +9,6 @@ var CharacterSchema = new Schema({
  	pronunciation: String,
  	radicals: String,
  	category: String,
- 	proficiency: String,
  	dateSubmitted: { type: Date, default: Date.now },
  	dateEdited: Date,
  	submittedBy: String,

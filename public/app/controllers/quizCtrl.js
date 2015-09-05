@@ -21,9 +21,11 @@ angular.module('quizCtrl', ['quizService', 'characterService', 'userService'])
 	vm.userCharacters = [];
 
 	vm.makeQuiz = function(key, value, number) {
+		console.log(key);
 		if (vm.userCharacters == false) {
 			vm.userCharacters = vm.characters;
 		}
+		
 		Quiz.makeQuiz(vm.characters, vm.userCharacters, key, value, number);
 		vm.quiz = Quiz.quiz;
 		vm.logged = false;
