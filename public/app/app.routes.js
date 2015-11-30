@@ -74,6 +74,12 @@ angular.module('app.routes', ['ngRoute'])
         controllerAs: 'quiz'
       })
 
+      // //addChar using scrape   //dont need anymore? incorporated into flashcards page
+      // .when('/addcharacter', {
+      //   templateUrl: 'app/views/pages/characters/addcharacter.html',
+      //   controller: 'addCharController',
+      //   controllerAs: 'characterAdder'
+      // })
 
   	  //get rid of the hash sumbol in the URL
   	  $locationProvider.html5Mode(true);

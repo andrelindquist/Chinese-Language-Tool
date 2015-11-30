@@ -5,13 +5,13 @@ var Schema = mongoose.Schema;
 //character Schema
 var CharacterSchema = new Schema({
 	symbol: { type: String, required: true, index: { unique: true }},
-	definition: String,
+	definition: [],
  	pronunciation: String,
  	radicals: String,
  	category: String,
  	dateSubmitted: { type: Date, default: Date.now },
- 	dateEdited: Date,
  	submittedBy: String,
+ 	dateEdited: Date,
  	editedBy: String,
  	strokeCount: Number
 });

@@ -1,5 +1,5 @@
 module.exports = {
 	'port': process.env.PORT || 8080,
-	'database': 'mongodb://localhost:27017/myDatabase',
+	'database': 'mongodb://localhost:27017/charapp',
 	'secret': 'noodles'
 };

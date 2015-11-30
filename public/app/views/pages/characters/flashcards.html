@@ -5,7 +5,14 @@
 		<button ng-click="character.getData(character.key, character.value)">Count</button>
 		<p ng-show="character.countResult.calculated">{{character.countResult.message}}</p>
 		<br></br> -->
-		<a class="flash-dash-choice" id="add-character" href="/characters/create" class="btn btn-default">Add New Character</a>
+		<a class="flash-dash-choice" id="add-character" href="/characters/create" class="btn btn-default">Add New Character (Manually)</a>
+
+		<!-- Character Adder -->
+		<div ng-controller="addCharController as characterAdder">
+			<input type="text" ng-model="characterAdder.symbol">
+			<button ng-click="characterAdder.addChar()">Add Character</button>
+		</div>
+
 		<input class="flash-dash-choice" ng-model="filterQuery" type="text" 
         placeholder="Filter by">
         <input class="flash-dash-choice" ng-model="sortQuery" type="text" placeholder="Sort by">

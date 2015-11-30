@@ -71,6 +71,22 @@ angular.module('characterCtrl', ['characterService'])
 	}
 })
 
+//////////////////////////////////////////////////////////////
+//controller for saving scraped character data
+.controller('addCharController', function(Character) {
+
+	var vm = this;
+	vm.symbol = '';
+
+	vm.addChar = function() {
+		Character.addChar(vm.symbol)
+			.success(function(data) {
+				vm.symbol = '';
+			});
+	}
+})
+//////////////////////////////////////////////////////////////
+
 //controller applied to character creation page
 .controller('characterCreateController', function(Character, $sce, Auth) {
 

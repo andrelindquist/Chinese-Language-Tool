@@ -32,6 +32,11 @@ angular.module('characterService', [])
 		return $http.delete('/api/characters/' + id);
 	};
 
+	//save scraped char data
+	characterFactory.addChar = function(symbol) {
+		return $http.post('/api/addchar/' + symbol);
+	};
+
 	//return our entire userFactory object
 	return characterFactory;
 

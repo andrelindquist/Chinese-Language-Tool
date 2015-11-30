@@ -1,6 +1,8 @@
 var bodyParser = require('body-parser');
 var User = require('../models/user');
 var jwt = require('jsonwebtoken');
+var request = require('request');
+var cheerio = require('cheerio');
 var Character = require('../models/character');
 var config = require('../../config');
 
@@ -309,6 +311,182 @@ apiRouter.route('/characters/:character_id')
 
 			res.json({ message: 'Successfully Deleted.'});
 		});
+	});
+
+apiRouter.route('/addchar/:symbol')
+	//Grabs char data with user-specified symbol and makes Post request
+	.post(function(req, res) {
+		//req.body.character should be a chinese symbol
+		console.log(req.params.symbol);
+//////////Scraping Goes Here///////////////////////////////
+
+		// url = 'http://www.cantonese.sheik.co.uk/dictionary/characters/%E5%B0%84/'; //test url
+		// url = 'http://www.cantonese.sheik.co.uk/dictionary/characters/%E9%9B%BB/';
+		url = 'http://www.cantonese.sheik.co.uk/dictionary/characters/' + encodeURI(req.params.symbol) + '/';
+
+		console.log(url);
+
+		request(url, function(error, response, html){
+			if(!error){
+				console.log('no request error- go scraping');
+				var $ = cheerio.load(html);
+
+				var character, definitions, pronunciation, strokeCount, radicals
+				var json = { character: "", definitions: [], pronunciation: "", strokeCount: "", radicals: ""};
+
+				$('.word').filter(function(){
+			        var data = $(this);
+			        character = data.text();
+			        json.character = character;
+		        });
+
+				//get pronunciation
+		        $('.cardjyutping').filter(function(){
+		        	var data = $(this);
+		        	pronunciation = data.children()[0].prev.data;
+		        	pronunciation += data.children()[0].children[0].data;
+		        	json.pronunciation = pronunciation;
+		        });
+
+		        $('.charstrokecount').filter(function(){
+		        	var data = $(this);
+		        	strokeCount = data.text();
+		        	strokeCount = strokeCount.replace("Stroke count: ", '');
+		        	json.strokeCount = strokeCount;
+		        });
+
+		        //get radicals
+		        $('.charradical .chinesemed').filter(function(){
+		        	var data = $(this);
+		        	try {
+			        	radicals = data.children()[0].children[0].data;
+			        	json.radicals = radicals;
+			        }
+			        catch(e) {
+			        	console.log('unable to get radical');
+			        }
+		        });
+
+		        $('.wordmeaning').filter(function(){
+					var definitionData = $(this);
+					var definitionDataString = definitionData.html();
+					var definitionString = truncateString(definitionDataString);
+					if (definitionString.indexOf('[1]') > -1) {
+						json.definitions = getDefs(definitionString);
+					}
+					else {
+						json.definitions = definitionString.split(";");
+					}
+					json.definitions = trimDefs(json.definitions);
+					
+		        	//return a substring of the html string containing the definitions
+					function truncateString(htmlString) {
+						var truncatedString = '';
+						var nums = ['1', '2', '3', '4', '5', '6', '7', '8', '9'];
+						var firstBracket = false;
+						var startIndex = 0;   //Default is 0, therefore a htmlString not containing '[n]' will still be captured
+						var i;
+						for (i = 0; i < htmlString.length; i += 1) {
+							if (!firstBracket) {
+								if (htmlString[i] === '[') {
+									if (htmlString[i + 2] === ']') {
+										for (var j = 0; j < nums.length; j += 1) {
+											if (htmlString[i + 1] === nums[j]) {
+												firstBracket = true;
+												startIndex = i;
+											}
+										}
+									}
+								}
+							}
+							if (htmlString.substring(i, i + 4) === '<br>' && htmlString.substring(i + 4, i + 11).indexOf('<br>') > -1) {
+								return htmlString.substring(startIndex, i);
+							}						
+						}
+					}
+
+					//traverse substring generated from function truncateString and collect each definition in an array
+					function getDefs(htmlString) {
+						var definitionArray = [];
+						var nums = ['1', '2', '3', '4', '5', '6', '7', '8', '9']; //used to detect bracket pattern
+						var firstBracket = false;
+						var startIndex;
+						var endIndex;
+						var defHolder = '';
+						for (var i = 0; i < htmlString.length; i += 1) {
+							if (!firstBracket) {
+								secondBracket = false;
+								if (htmlString[i - 2] === '[') {
+									if (htmlString[i] === ']') {
+										for (var j = 0; j < nums.length; j += 1) {
+											if (htmlString[i - 1] === nums[j]) {
+												firstBracket = true;
+												startIndex = i + 1;
+											}
+										}
+									}
+								}
+							}
+							if (firstBracket) {
+								if (htmlString[i] === '[') {
+									for (var k = 0; k < nums.length; k += 1) {
+										if (htmlString[i + 1] === nums[k]) {
+											endIndex = i - 1;
+											firstBracket = false;
+											definitionArray.push(htmlString.substring(startIndex, endIndex));
+										}
+									}
+								}
+								if (i > endIndex && i === htmlString.length - 1) {
+									endIndex = i;
+									definitionArray.push(htmlString.substring(startIndex, endIndex + 1));
+								}						
+							}
+						}
+						return definitionArray;
+					}
+
+					//Regexp's to trim each definition in json.definitions
+					function trimDefs(definitionArray) {
+						for (var b = 0; b < definitionArray.length; b += 1) {
+							definitionArray[b] = definitionArray[b].replace("<br>", '');
+							definitionArray[b] = definitionArray[b].replace("\r", '');
+							definitionArray[b] = definitionArray[b].replace("\n", '');
+							definitionArray[b] = definitionArray[b].replace(/\s\s+/g, '');
+							definitionArray[b] = definitionArray[b].replace("&apos;", "'");
+						}
+						return definitionArray;
+					}
+		        })
+			}
+//////////////////////////////////////////////////////////
+
+			//Create Character model and set properties to requested data
+			var character = new Character();
+			character.symbol = json.character;
+			character.definition = json.definitions;
+			character.pronunciation = json.pronunciation;
+			character.strokeCount = json.strokeCount;
+			character.radicals = json.radicals;
+			// character.category;
+			character.submittedBy = 'testing';
+			character.dateSubmitted = new Date();
+
+			character.save(function(err) {
+				console.log('char data');
+				console.log(character);
+				if (err) {
+					//duplicate entry
+					if (err.code == 11000) {
+							console.log('this char already exists');
+							return res.json({ success: false, message: 'That character has already been entered'});
+						}
+					else
+						return res.send(err);
+				}
+					res.json({ message: 'character entered!' });
+			});
+		})
 	});
 
 	return apiRouter;

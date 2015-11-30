@@ -14,9 +14,11 @@
     "express": "^4.12.4",
     "jsonwebtoken": "^5.0.4",
     "mongoose": "~3.8.19",
-    "morgan": "^1.5.3"
+    "morgan": "^1.5.3",
+    "request" : "latest",
+    "cheerio" : "latest"
   },
   "engines": {
-    "node": "0.12.2"
+    "node": "4.1.1"
   }
 }
