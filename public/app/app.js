@@ -11,7 +11,6 @@ angular.module('characterApp', [
 	'quizService',
 	'quizCtrl',
     'resultsDirective',
-    'iframeDirective',
     'audioDirective'
 	])
 

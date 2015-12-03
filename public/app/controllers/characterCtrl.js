@@ -3,7 +3,7 @@ angular.module('characterCtrl', ['characterService'])
 
 //character controller for the main page
 //inject character factory
-.controller('characterController', function(Character, $sce) {
+.controller('characterController', function(Character, $scope) {
 
 	var vm = this;
 
@@ -13,14 +13,10 @@ angular.module('characterCtrl', ['characterService'])
 
 	  	//bind the users that come back to vm.characters
 	  	vm.characters = data;
-
-////////get list of all pronunciations for adding audio files
-	  	// var proList = [];
-	  	// for (var i = 0; i < vm.characters.length; i += 1) {
-	  	// 	proList.push(vm.characters[i].pronunciation);
-	  	// }
-	  	// console.log(proList);
 	  });
+
+	$scope.$on('LOAD', function() {vm.loading = true});
+	$scope.$on('UNLOAD', function() {vm.loading = false});
 
 	//function to delete a character
 	vm.deleteCharacter = function(id) {
@@ -41,6 +37,26 @@ angular.module('characterCtrl', ['characterService'])
 			});
 	};
 
+	vm.increment = function(definitionLength, index) {
+		console.log('length:' + definitionLength);
+		console.log('index:' + index);
+		if (index < definitionLength - 1) {
+			return index += 1;
+		}
+		else if (index >= definitionLength - 1) {
+			return 0;
+		}
+	}
+
+	vm.decrement = function(definitionLength, index) {
+		if (index <= 0) {
+			return definitionLength - 1;
+		}
+		else {
+			return index -= 1;
+		}
+	}
+
 //Added 15/6/2015 - used on Flashcards page- /////// 8/16/2015 Commented out- may add back in /// also need to add search function
 
 
@@ -60,35 +76,36 @@ angular.module('characterCtrl', ['characterService'])
 	// 	console.log('Key: ' + key + '| Value: ' + value + ' ' + count);
 	// 	return vm.countResult;
 	// }
-
-	vm.searchOn = false;
-	vm.toggleSearch = function() {
-		vm.searchOn = !vm.searchOn;
-	}
-
-	vm.getSrc = function() {
-	  return $sce.trustAsResourceUrl("http://www.cantonese.sheik.co.uk/scripts/wordsearch.php");
-	}
 })
 
 //////////////////////////////////////////////////////////////
 //controller for saving scraped character data
-.controller('addCharController', function(Character) {
+.controller('addCharController', function(Character, $scope) {
 
 	var vm = this;
 	vm.symbol = '';
 
 	vm.addChar = function() {
-		Character.addChar(vm.symbol)
-			.success(function(data) {
-				vm.symbol = '';
-			});
+		//only execute if vm.symbol is a single character
+		if (vm.symbol.length === 1) {
+			
+			$scope.$emit('LOAD');  // characterController's 'loading' property will be set to true
+
+			Character.addChar(vm.symbol)
+				.success(function(data) {
+					vm.symbol = '';
+					$scope.$emit('UNLOAD');
+				});
+		}
+		else {
+			console.log('You must enter one character');
+		}
 	}
 })
 //////////////////////////////////////////////////////////////
 
-//controller applied to character creation page
-.controller('characterCreateController', function(Character, $sce, Auth) {
+//controller for manually entering character data
+.controller('characterCreateController', function(Character, Auth) {
 
 	var vm = this;
 
@@ -102,37 +119,24 @@ angular.module('characterCtrl', ['characterService'])
 		Auth.getUser()
 			.then(function(data) {
 				vm.user = data.data;
-
 				vm.username = vm.user.username;
 
 		//use the create function in the characterService
 				Character.create(vm.characterData, vm.username)
 				  .success(function(data) {
-
 				  	//clear the form
 				  	vm.characterData = {};
 				  	vm.message = data.message;
 				  });
-
-			})
-		
+			})		
 		//clear the message
 		vm.message = '';
-	};
-
-	vm.searchOn = false;
-	vm.toggleSearch = function() {
-		vm.searchOn = !vm.searchOn;
-	}
-
-	vm.getSrc = function() {
-	  return $sce.trustAsResourceUrl("http://www.cantonese.sheik.co.uk/scripts/wordsearch.php");
 	};
 })
 
 
 // controller applied to character edit page
-.controller('characterEditController', function($routeParams, Character, $sce, Auth) {
+.controller('characterEditController', function($routeParams, Character, Auth) {
 
 	var vm = this;
 
@@ -151,7 +155,6 @@ angular.module('characterCtrl', ['characterService'])
 	vm.saveCharacter = function() {
 		vm.message = '';
 
-
 		Auth.getUser()
 			.then(function(data) {
 				vm.user = data.data;
@@ -169,18 +172,5 @@ angular.module('characterCtrl', ['characterService'])
 
 				});
 			});
-
 	};
-
-	vm.searchOn = false;
-	vm.toggleSearch = function() {
-		vm.searchOn = !vm.searchOn;
-	}
-
-	vm.getSrc = function() {
-	  return $sce.trustAsResourceUrl("http://www.cantonese.sheik.co.uk/scripts/wordsearch.php");
-	}
-
-	//modal logic
-	vm.modalOn = false;
 });

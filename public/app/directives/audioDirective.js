@@ -7,7 +7,7 @@ directive('audioButton', [function () {
             var audio;
 
             var audioSrc = attrs.address;
-            audioSrc = audioSrc + attrs.pronunication + ".wav";
+            // audioSrc = audioSrc + attrs.pronunication + ".wav";
             var audio = new Audio(audioSrc);
 
             scope.update = function() {

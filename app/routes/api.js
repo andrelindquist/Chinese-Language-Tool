@@ -449,11 +449,18 @@ apiRouter.route('/addchar/:symbol')
 					//Regexp's to trim each definition in json.definitions
 					function trimDefs(definitionArray) {
 						for (var b = 0; b < definitionArray.length; b += 1) {
+							while (definitionArray[b].indexOf('<a') > -1) {
+								console.log('we see the <a tag.');
+								var defSubstring = definitionArray[b].substring(definitionArray[b].indexOf('<a'), definitionArray[b].indexOf('</a>'));
+								definitionArray[b] = definitionArray[b].replace(defSubstring, '');
+							}
+
 							definitionArray[b] = definitionArray[b].replace("<br>", '');
 							definitionArray[b] = definitionArray[b].replace("\r", '');
 							definitionArray[b] = definitionArray[b].replace("\n", '');
 							definitionArray[b] = definitionArray[b].replace(/\s\s+/g, '');
 							definitionArray[b] = definitionArray[b].replace("&apos;", "'");
+							definitionArray[b] = definitionArray[b].replace("</a>", '');
 						}
 						return definitionArray;
 					}

@@ -47,7 +47,7 @@ angular.module('quizService', [])
 		function populateAnswerChoices(array, property) {
 			var answerChoices = [];
 			for (var i = 0; i < array.length; i += 1) {
-				answerChoices.push(array[i][property]);
+				answerChoices.push(array[i][property][0]);
 			}
 			return shuffle(answerChoices);
 		}
@@ -61,10 +61,10 @@ angular.module('quizService', [])
 			this.pronunciation = charList[index].pronunciation;
 			if (this.questionType === 1) {
 				this.question = charList[index].symbol;
-				this.answer = charList[index].definition;
+				this.answer = charList[index].definition[0];
 			}
 			else {
-				this.question = charList[index].definition;
+				this.question = charList[index].definition[0];
 				this.answer = charList[index].symbol;
 			}
 
