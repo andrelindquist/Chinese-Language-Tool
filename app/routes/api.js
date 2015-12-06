@@ -14,22 +14,16 @@ module.exports = function(app, express) {
 //get an instance of the express router
 var apiRouter = express.Router();
 
-//test route to make sure everything is working
-//accessed at GET http://localhost:8080/api
-apiRouter.get('/', function(req, res) {
-	res.json({ message: 'hooray!, welcome to our API!' });
-});
-
 //more routes will happen here -----
 
 //ROUTES FOR OUR API
 //==================
 
 //middleware for all requests
-apiRouter.use(function(req, res, next) {
-	console.log('a user came to the app');
-	next();
-})
+// apiRouter.use(function(req, res, next) {
+// 	console.log('a user came to the app');
+// 	next();
+// })
 
 //test route
 apiRouter.get('/', function(req, res) {
