@@ -41,6 +41,16 @@ ul {
 	margin-right: 5%;
 }
 
+/** Home Page **/
+
+.mission-statement-div {
+	line-height: 2;
+}
+
+.signIn-logIn-bar {
+	margin-left: 10%;
+}
+
 /**  Flash Cards View  **/
 
 #flash-card {

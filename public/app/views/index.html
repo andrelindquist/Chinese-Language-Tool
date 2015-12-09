@@ -3,7 +3,9 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Quiz App</title>
+	<title>Jijidor Quiz App</title>
+
+	<link rel="shortcut icon" href="public/assets/images/dordor.ico" type="image/x-icon"/>
 
 	<!-- FOR ANGULAR ROUTING -->
 	<base href="/">
@@ -47,7 +49,7 @@
 		<div class="navigation">
 			<a ng-href="/flashcards" class="btn btn-primary nav-link">Flashcards</a>
 			<a ng-href="/quiz" class="btn btn-primary nav-link">Quiz</a>
-			<a href="/login" ng-if="!main.loggedIn">Login</a>
+			<a href="/login" ng-if="!main.loggedIn">Login/SignUp</a>
 			<a id="nav-greeting" ng-if="main.loggedIn" ng-href='/dashboard'>Hello {{ main.user.username }}!</a>
 			<a id="nav-logout" href="#" ng-if="main.loggedIn" ng-click="main.doLogout()">Logout</a>
 		</div>

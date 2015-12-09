@@ -1,11 +1,20 @@
 angular.module('mainCtrl', [])
 
-.controller('mainController', function($rootScope, $location, Auth) {
+.controller('mainController', function($rootScope, $scope, $location, Auth) {
 
 	var vm = this;
 
-	//get info if a person is logged in
-	vm.loggedIn = Auth.isLoggedIn();
+	$scope.$watch(function(){
+	    return Auth.isLoggedIn();
+		}, function (authLogged) {
+		    vm.loggedIn = authLogged;
+		    Auth.getUser()
+		    	.then(function(data) {
+					vm.user = data.data;
+				});
+	});
+
+
 
 	//check to see if a user is logged in on every request
 	$rootScope.$on('$routeChangeStart', function() {
@@ -22,12 +31,12 @@ angular.module('mainCtrl', [])
 	vm.doLogin = function() {
 		//clear the error
 		vm.error = '';
-
+		console.log(vm.loginData);
 		Auth.login(vm.loginData.username, vm.loginData.password)
 			.success(function(data) {
-				//if a user successfully logs in, reidrect to users page
+				//if a user successfully logs in, redirect to home page
 				if (data.success) {
-					$location.path('/dashboard');
+					$location.path('/');
 				} else {
 					vm.error = data.message;
 				}
@@ -40,6 +49,6 @@ angular.module('mainCtrl', [])
 		Auth.logout();
 		vm.user = '';
 
-		$location.path('/login');
+		$location.path('/');
 	};
 });

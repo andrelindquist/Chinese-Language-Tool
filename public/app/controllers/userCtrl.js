@@ -1,7 +1,7 @@
-angular.module('userCtrl', ['userService'])
+angular.module('userCtrl', ['userService', 'authService'])
 
 //controller for user creation page
-.controller('userCreateController', function(User) {
+.controller('userCreateController', function(User, Auth) {
 
 	var vm = this;
 	//variable to hide/show elements of the view
@@ -16,6 +16,10 @@ angular.module('userCtrl', ['userService'])
 		//use the create function from userService
 		User.create(vm.userData)
 			.success(function(data) {
+
+				//login using 'authService'
+				Auth.login(vm.userData.username, vm.userData.password);
+
 				vm.userData = {};
 				vm.message = data.message;
 			});

@@ -1,11 +1,13 @@
-<div ng-if="!main.loggedIn">
+<h3>Welcome {{main.user.username}}</h3>
+
+<div class="mission-statement-div">
+	<p>This website was made with the purpose of providing a way to learn and practice recognizing chinese characters</p>
+	<p>Wouldn't it be cool to know how to read Chinese?  Impress your friends?  Gain insight into a culture which makes up nearly 20% of the world population?</p>
+	<p>Okay not so fast.  I can't guarantee that you'll become a master poet but I will say that using this website can help you read and recognize the written Chinese language</p>
+	<p>You might be suprised what you can pick up, even without much effort, just by spending five minutes now and then looking through the flashcards and clicking through the quizzes on this site</p>
+</div>
+
+<div class="signIn-logIn-bar" ng-if="!main.loggedIn">
 	<a href="/login" class="btn btn-primary">Login</a>
-	<div ng-if="!main.loggedIn"><a ng-href="/users" class="btn btn-success">Sign Up</a></div>
+	<a ng-if="!main.loggedIn" ng-href="/users" class="btn btn-success">Sign Up</a>
 </div>
-
-
-
-<div ng-if="main.loggedIn">
-	<h3>Welcome {{main.user.username}}</h3>
-</div>
-
