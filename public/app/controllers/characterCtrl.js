@@ -15,8 +15,17 @@ angular.module('characterCtrl', ['characterService'])
 	  	vm.characters = data;
 	  });
 
+	//Event Listeners talk to charAddController - These respond when a user adds a new character
 	$scope.$on('LOAD', function() {vm.loading = true});
-	$scope.$on('UNLOAD', function() {vm.loading = false});
+	$scope.$on('UNLOAD', function() {
+		vm.loading = false;
+
+		//Update the model with all the characters- including the one that was just entered
+		Character.all()
+	  		.success(function(data) {
+	  			vm.characters = data;
+	  		});
+	});
 
 	//function to delete a character
 	vm.deleteCharacter = function(id) {
@@ -24,16 +33,12 @@ angular.module('characterCtrl', ['characterService'])
 
 		Character.delete(id)
 			.success(function(data) {
-
 				// get all characters to update the table
-				// you can also set up your api 
-				// to return the list of users with the delete call
 				Character.all()
 					.success(function(data) {
 						vm.processing = false;
 						vm.characters = data;
 					});
-
 			});
 	};
 
@@ -134,8 +139,6 @@ angular.module('characterCtrl', ['characterService'])
 	};
 })
 
-
-// controller applied to character edit page
 .controller('characterEditController', function($routeParams, Character, Auth) {
 
 	var vm = this;
@@ -144,14 +147,14 @@ angular.module('characterCtrl', ['characterService'])
 	// differentiates between create or edit pages
 	vm.type = 'edit';
 
-	// get the user data for the user you want to edit
-	// $routeParams is the way we grab data from the URL
+	// get the character data for the character you want to edit
+	// grab data from URL using $routeParams
 	Character.get($routeParams.character_id)
 		.success(function(data) {
 			vm.characterData = data;
 		});
 
-	// function to save the character
+	//Updates the Character with edited information
 	vm.saveCharacter = function() {
 		vm.message = '';
 
@@ -161,16 +164,16 @@ angular.module('characterCtrl', ['characterService'])
 
 				vm.username = vm.user.username;
 
-			// call the characterService function to update 
-			Character.update($routeParams.character_id, vm.characterData, vm.username)
-				.success(function(data) {
+				// call the characterService function to update 
+				Character.update($routeParams.character_id, vm.characterData, vm.username)
+					.success(function(data) {
 
-					// clear the form
-					vm.characterData = {};
-					// bind the message from our API to vm.message
-					vm.message = data.message;
+						// clear the form
+						vm.characterData = {};
+						// bind the message from our API to vm.message
+						vm.message = data.message;
 
-				});
+					});
 			});
 	};
 });
