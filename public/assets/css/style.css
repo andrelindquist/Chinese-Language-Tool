@@ -92,6 +92,23 @@ ul {
 
 }
 
+/*Char Add Loading Animation*/
+.loading-add-char {
+	color: #44dd44;
+	animation: anim 1.2s linear infinite;
+}
+
+@keyframes anim {
+  to {
+    color: #000000;
+    transform: translate(20px);
+  }
+}
+
+.loading-add-char.ng-hide {
+    opacity: 0;
+}
+
 /**  Quiz View  **/
 
 .quiz-dashboard {

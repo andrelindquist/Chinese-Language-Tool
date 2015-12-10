@@ -1,5 +1,5 @@
 //start angular module and inject characterService
-angular.module('characterCtrl', ['characterService'])
+angular.module('characterCtrl', ['characterService', 'ngAnimate'])
 
 //character controller for the main page
 //inject character factory
