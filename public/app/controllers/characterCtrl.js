@@ -43,8 +43,6 @@ angular.module('characterCtrl', ['characterService', 'ngAnimate'])
 	};
 
 	vm.increment = function(definitionLength, index) {
-		console.log('length:' + definitionLength);
-		console.log('index:' + index);
 		if (index < definitionLength - 1) {
 			return index += 1;
 		}

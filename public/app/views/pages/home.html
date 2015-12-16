@@ -1,9 +1,9 @@
 <h3>Welcome {{main.user.username}}</h3>
 
 <div class="mission-statement-div">
-	<p>This website was made with the purpose of providing a way to learn and practice recognizing chinese characters</p>
+	<p>This website is a tool for learning and practicing recognition of Chinese characters</p>
 	<p>Wouldn't it be cool to know how to read Chinese?  Impress your friends?  Gain insight into a culture which makes up nearly 20% of the world population?</p>
-	<p>Okay not so fast.  I can't guarantee that you'll become a master poet but I will say that using this website can help you read and recognize the written Chinese language</p>
+	<p>Okay not so fast.  I can't guarantee that you'll become a master poet, but using this site can help you read & recognize the written Chinese language</p>
 	<p>You might be suprised what you can pick up, even without much effort, just by spending five minutes now and then looking through the flashcards and clicking through the quizzes on this site</p>
 </div>
 
@@ -13,5 +13,5 @@
 </div>
 
 <div ng-if="main.loggedIn">
-	<a href="/dashboard">Your Dashboard</a>
+	<a href="/dashboard">{{main.user.username}}'s Dashboard</a>
 </div>

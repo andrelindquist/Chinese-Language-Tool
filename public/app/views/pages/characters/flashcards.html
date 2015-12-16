@@ -9,7 +9,7 @@
 		
 		<!-- Character Adder -->
 		<div ng-controller="addCharController as characterAdder">
-			<input type="text" ng-model="characterAdder.symbol">
+			<input class="flash-add-input" type="text" ng-model="characterAdder.symbol">
 			<button ng-click="characterAdder.addChar()">Add Character</button>
 
   			<button ng-model="collapsed" ng-click="collapsed=!collapsed">?</button>
@@ -48,5 +48,5 @@
 
 <div id="flashcards-footer">
 	<a ng-href="/characters" class="btn btn-danger">Table View</a>
-	<a class="flash-dash-choice" id="add-character" href="/characters/create" class="btn btn-default">Add New Character (Manually)</a>
+	<a class="btn btn-danger" href="/characters/create" class="btn btn-default">Add Character (Manually)</a>
 </div>
