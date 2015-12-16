@@ -27,13 +27,13 @@
 </div>
 
  <div id="flash-card-wrapper" class="container-fluid" ng-show"character.characters">
-	<div id="flash-card" ng-repeat="char in character.characters | filter:filterQuery | orderBy:sortQuery">
-		<p id="symbol" ng-click="showDetails = !showDetails">{{ char.symbol }}</p>
-	<!--Show on-click-->
+	<div class="flash-card" ng-repeat="char in character.characters | filter:filterQuery | orderBy:sortQuery">
+		<button class="symbol" ng-click="showDetails = !showDetails" ng-class="{'active-flashcard': showDetails}">{{ char.symbol }}</button>
+	<!--Show Details on-click & add active-flashcard class to .symbol button-->
 		<div class="flashcard-details" ng-init="char.index = 0" ng-if="showDetails">
+			<p>{{ char.definition[char.index] }}</p>
 			<p>
 				<button ng-click="char.index = character.decrement(char.definition.length, char.index)"><</button>
-				{{ char.definition[char.index] }}
 				<button ng-click="char.index = character.increment(char.definition.length, char.index)">></button>
 			</p>		
 			<audio-button data-ng-click="update(); play()" pronunciation="{{char.pronunciation}}" address="http://humanum.arts.cuhk.edu.hk/Lexis/Canton/sound/"><p class="audio">{{ char.pronunciation }}       <span class="glyphicon glyphicon-volume-up"></span></p></audio-button> <!--When using local audio files: address="../../../assets/audio/"-->

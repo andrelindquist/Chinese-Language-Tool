@@ -51,7 +51,7 @@
 			<a ng-href="/flashcards" class="btn btn-primary nav-link">Flashcards</a>
 			<a ng-href="/quiz" class="btn btn-primary nav-link">Quiz</a>
 			<a href="/login" ng-if="!main.loggedIn">Login/SignUp</a>
-			<a id="nav-greeting" ng-if="main.loggedIn" ng-href='/dashboard'>Hello {{ main.user.username }}!</a>
+			<a id="nav-greeting" ng-if="main.loggedIn" ng-href='/dashboard'>Hello {{ main.user.username }}</a>
 			<a id="nav-logout" href="#" ng-if="main.loggedIn" ng-click="main.doLogout()">Logout</a>
 		</div>
 	</div>

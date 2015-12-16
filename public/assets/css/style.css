@@ -53,7 +53,7 @@ ul {
 
 /**  Flash Cards View  **/
 
-#flash-card {
+.flash-card {
 	border: 2px #afafcf solid;
 	border-radius: .4em;
 	margin: 1px 2px;
@@ -61,10 +61,12 @@ ul {
 	float: left;
 }
 
-#flash-card #symbol {
+.flash-card .symbol {
 	font-size: 3em;
-	text-align: center;
-	margin: 0;
+	width: 100%;	
+	background-color: #fff;
+	border: none;
+	margin: 0 auto;
 	cursor: pointer;
 }
 
@@ -87,9 +89,16 @@ ul {
 }
 
 .flashcard-details {
-	background: #fff;
+	background: #ededff;
+	border: 2px solid #ababdf;
+	border-radius: 5px;
+	padding: 10px;
 	position: absolute;
 	z-index: 10000;
+}
+
+.flash-card .active-flashcard {
+	background-color: #ededff;
 }
 
 #flash-pronounciation {
@@ -281,21 +290,19 @@ ul {
 /* Smartphones (portrait and landscape) ----------- */
 @media screen and (max-width: 480px) {
 	/* Index Page Header */
-	#nav-greeting {
-		display: none;
-	}
+
 
 	.jumbotron {
 		padding: 5px;
 	}
 
 	/*Flash Cards Page*/
-	#flash-card {
+	.flash-card {
 		width: 18%;
 	}
 
-	#flash-card #symbol {
-	font-size: 2.5em;
+	.flash-card .symbol {
+		font-size: 2.5em;
 	}
 
 	#add-character {
@@ -304,7 +311,10 @@ ul {
 	}
 
 	.flashcard-details { /*stops collapsible flashcard content from being squished on the right side of the screen*/
-		left: 20%;
+		text-align: center;
+		margin: 0 auto;
+	    left: 0;
+	    right: 0;
 	}
 
 	/* Quiz Page */
@@ -368,7 +378,7 @@ ul {
  @media screen and (min-width:480px) and (max-width:900px) {
 	/*Flash Cards Page*/
 
- 	#flash-card {
+ 	.flash-card {
 		width: 12%;
 	}
 

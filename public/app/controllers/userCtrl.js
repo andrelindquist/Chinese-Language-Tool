@@ -4,13 +4,13 @@ angular.module('userCtrl', ['userService', 'authService', 'ngAnimate'])
 .controller('userCreateController', function(User, Auth) {
 
 	var vm = this;
+
 	//variable to hide/show elements of the view
 	//differentiates between create or edit pages
 	vm.type = 'create';
 
 	//function to create a user
 	vm.saveUser = function() {
-		vm.processing = true;
 		vm.message = '';
 
 		if (vm.userData.username && vm.userData.password.length > 5) {
@@ -28,8 +28,6 @@ angular.module('userCtrl', ['userService', 'authService', 'ngAnimate'])
 		else {
 			vm.message = "Your password must be at least six characters long";
 		}
-
-		vm.processing = false;
 	};
 })
 
