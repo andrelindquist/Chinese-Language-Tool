@@ -3,7 +3,7 @@
 	<h1 ng-if="user.type == 'edit'">Edit User</h1>
 </div>
 
-<form class="form-horizontal" ng-submit="user.saveUser()">
+<form class="form-horizontal" ng-hide="main.loggedIn" ng-submit="user.saveUser()"><!--Hide User Create Form After Submission of if already logged in-->
 
 	<div class="form-group">
 		<label class="col-sm-2 control-label">Username</label>

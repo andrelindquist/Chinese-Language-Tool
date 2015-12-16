@@ -9,5 +9,9 @@
 
 <div class="signIn-logIn-bar" ng-if="!main.loggedIn">
 	<a href="/login" class="btn btn-primary">Login</a>
-	<a ng-if="!main.loggedIn" ng-href="/users" class="btn btn-success">Sign Up</a>
+	<a href="/users" class="btn btn-success">Sign Up</a>
+</div>
+
+<div ng-if="main.loggedIn">
+	<a href="/dashboard">Your Dashboard</a>
 </div>

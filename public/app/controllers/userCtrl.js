@@ -1,4 +1,4 @@
-angular.module('userCtrl', ['userService', 'authService'])
+angular.module('userCtrl', ['userService', 'authService', 'ngAnimate'])
 
 //controller for user creation page
 .controller('userCreateController', function(User, Auth) {
@@ -13,16 +13,23 @@ angular.module('userCtrl', ['userService', 'authService'])
 		vm.processing = true;
 		vm.message = '';
 
-		//use the create function from userService
-		User.create(vm.userData)
-			.success(function(data) {
+		if (vm.userData.username && vm.userData.password.length > 5) {
+			//use the create function from userService
+			User.create(vm.userData)
+				.success(function(data) {
 
-				//login using 'authService'
-				Auth.login(vm.userData.username, vm.userData.password);
+					//login using 'authService'
+					Auth.login(vm.userData.username, vm.userData.password);
 
-				vm.userData = {};
-				vm.message = data.message;
-			});
+					vm.userData = {};
+					vm.message = data.message;
+				});
+		}
+		else {
+			vm.message = "Your password must be at least six characters long";
+		}
+
+		vm.processing = false;
 	};
 })
 

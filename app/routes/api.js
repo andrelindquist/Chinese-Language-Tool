@@ -89,7 +89,7 @@ apiRouter.route('/users')
 				}
 			}
 				//return a message
-				res.json({ message: 'User created!' });
+				res.json({ message: 'Your account has been created!' });
 		});
 	})
 

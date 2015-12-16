@@ -105,9 +105,7 @@ ul {
   }
 }
 
-.loading-add-char.ng-hide {
-    opacity: 0;
-}
+/*User Signup Form Animation*/
 
 /**  Quiz View  **/
 
@@ -260,6 +258,10 @@ ul {
 	background-position: 0 0;
 }
 
+/* User Dashboard */
+.dash-table td, th{
+	padding: 1px 5px;
+}
 
 /*audio directive*/
 .audio {
