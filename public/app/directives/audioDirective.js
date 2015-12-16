@@ -35,7 +35,7 @@ directive('audioButton', [function () {
             };
 
             element.css({ 
-                backgroundColor: '#bfdfff',
+                // backgroundColor: '#bfdfff',
                 display: 'inline-block'
             });
         }
