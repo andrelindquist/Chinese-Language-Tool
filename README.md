@@ -1,3 +1,4 @@
 # Chinese-Language-Tool
-MEAN stack application to store Chinese characters in a dictionary and generate randomized quizzes
-Yay!
+
+This app is a tool to help learn the written Chinese language.  Users can take randomly generated quizzes and are able to add Chinese characters to the the app's database.
+
