@@ -30,7 +30,7 @@
 	<div id="flash-card" ng-repeat="char in character.characters | filter:filterQuery | orderBy:sortQuery">
 		<p id="symbol" ng-click="showDetails = !showDetails">{{ char.symbol }}</p>
 	<!--Show on-click-->
-		<div id="details" ng-init="char.index = 0" ng-if="showDetails">
+		<div class="flashcard-details" ng-init="char.index = 0" ng-if="showDetails">
 			<p>
 				<button ng-click="char.index = character.decrement(char.definition.length, char.index)"><</button>
 				{{ char.definition[char.index] }}

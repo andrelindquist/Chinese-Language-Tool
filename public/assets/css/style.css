@@ -82,7 +82,7 @@ ul {
 	color: #317749;
 }
 
-#details {
+.flashcard-details {
 	background: #fff;
 	position: absolute;
 	z-index: 10000;
@@ -297,6 +297,10 @@ ul {
 	#add-character {
 		padding: 3px;
 		margin: 3px;
+	}
+
+	.flashcard-details { /*stops collapsible flashcard content from being squished on the right side of the screen*/
+		left: 20%;
 	}
 
 	/* Quiz Page */
