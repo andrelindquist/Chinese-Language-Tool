@@ -7,7 +7,9 @@
 				<h1 ng-class="{'english-question': question.questionType == 2}">{{question.question}}</h1>
 			</audio-button>
 		</li>
-		<li><h3 ng-repeat="choice in question.choices" class="quiz-summary-choice" ng-class="{'quiz-answer': choice == question.answer, 'quiz-attempted': choice == question.attemptedAnswer, 'english-answers': question.questionType == 1}">{{choice}}<span ng-if="choice == question.answer || choice == question.attemptedAnswer"></span></h3></li>
+		<li>
+			<h3 ng-repeat="choice in question.choices" class="quiz-summary-choice" ng-class="{'quiz-answer': choice == question.answer, 'quiz-attempted': choice == question.attemptedAnswer, 'english-answers': question.questionType == 1}">{{choice}}</h3>
+		</li>
 	</ul>
 </div>
 <button id="btn-close-results" class="btn btn-primary" ng-click="ngModel.quiz.quizFinished = false">Close Summary</button>

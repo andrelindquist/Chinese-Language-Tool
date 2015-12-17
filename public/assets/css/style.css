@@ -251,16 +251,16 @@ ul {
 }
 
 /* Results image sprite */
-.quiz-summary-question span {
+/*.quiz-summary-question span {
 	background: url(../images/quiz-sprites.png);
 	height: 32px;
 	width: 32px;
 	float: right;
 	margin-right: 20%;
 	padding: 0 32px 0 0;
-}
+}*/
 
-.quiz-answer span {
+/*.quiz-answer span {
 	background-position: 0 -64px;
 }
 
@@ -270,6 +270,18 @@ ul {
 
 .quiz-attempted.quiz-answer span {
 	background-position: 0 0;
+}*/
+
+.quiz-answer {
+	background-color: #9999cc;
+}
+
+.quiz-attempted {
+	background-color: #de9999;
+}
+
+.quiz-answer.quiz-attempted {
+	background-color: #99da99;
 }
 
 /* User Dashboard */
