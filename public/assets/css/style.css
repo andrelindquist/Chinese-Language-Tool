@@ -250,28 +250,6 @@ ul {
 	float: left;
 }
 
-/* Results image sprite */
-/*.quiz-summary-question span {
-	background: url(../images/quiz-sprites.png);
-	height: 32px;
-	width: 32px;
-	float: right;
-	margin-right: 20%;
-	padding: 0 32px 0 0;
-}*/
-
-/*.quiz-answer span {
-	background-position: 0 -64px;
-}
-
-.quiz-attempted span {
-	background-position: 0 -32px;
-}
-
-.quiz-attempted.quiz-answer span {
-	background-position: 0 0;
-}*/
-
 .quiz-answer {
 	background-color: #9999cc;
 }
