@@ -23,6 +23,13 @@ angular.module('characterService', [])
 
 	//update a character
 	characterFactory.update = function(id, characterData, username) {
+		//Removes empty elements from the definition array
+		for (var i = 0; i < characterData.definition.length; i += 1) {
+			if (characterData.definition[i] === "") {
+				characterData.definition.splice(i, 1);
+			}
+		}
+		//Keep track of the username that edited the character data
 		characterData.username = username;
 		return $http.put('/api/characters/' + id, characterData);
 	};
