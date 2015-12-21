@@ -145,8 +145,7 @@ angular.module('characterCtrl', ['characterService', 'ngAnimate'])
 	// differentiates between create or edit pages
 	vm.type = 'edit';
 
-	// get the character data for the character you want to edit
-	// grab data from URL using $routeParams
+	//grab data from URL using $routeParams & get the character data to edit
 	Character.get($routeParams.character_id)
 		.success(function(data) {
 			vm.characterData = data;
