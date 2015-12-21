@@ -4,17 +4,24 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "postinstall": "grunt concat",
+    "postinstall": "echo postinstall time; ./node_modules/grunt-cli/bin/grunt concat",
     "start": "node server.js"
   },
-  "author": "",
+  "author": "Andre Lindquist",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/andrelindquist/Chinese-Language-Tool.git"
+  },
   "license": "ISC",
   "dependencies": {
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.12.4",
     "cheerio": "latest",
     "express": "^4.12.4",
-    "grunt": "^0.4.5",
+    "grunt": "0.4.5",
+    "grunt-cli": "0.1.13",
+    "grunt-contrib-concat": "0.5.1",
+    "grunt-contrib-watch": "0.6.1",
     "jsonwebtoken": "^5.0.4",
     "mongoose": "~3.8.31",
     "morgan": "^1.5.3",
@@ -23,9 +30,5 @@
   "engines": {
     "node": "4.1.1",
     "npm": "2.14.4"
-  },
-  "devDependencies": {
-    "grunt-contrib-concat": "^0.5.1",
-    "grunt-contrib-watch": "^0.6.1"
   }
 }
