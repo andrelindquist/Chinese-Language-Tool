@@ -56,24 +56,27 @@
 	<script src="app/app.js"></script>
 </head>
 
-<body class="container" ng-app="characterApp" ng-controller="mainController as main">
-	<div class="jumbotron">
-		<h2 id="index-header-text"><a ng-href="/">Quiz App</a></h2>
-		<img id='jiji-image' src="assets/svg/jiji.svg">
-		<div class="navigation">
-			<a ng-href="/flashcards" class="btn btn-primary nav-link">Flashcards</a>
-			<a ng-href="/quiz" class="btn btn-primary nav-link">Quiz</a>
-			<a href="/login" ng-if="!main.loggedIn">Login/SignUp</a>
-			<a id="nav-greeting" ng-if="main.loggedIn" ng-href='/dashboard'>Hello {{ main.user.username }}</a>
-			<a id="nav-logout" href="#" ng-if="main.loggedIn" ng-click="main.doLogout()">Logout</a>
-		</div>
-	</div>
 
+<body ng-app="characterApp" ng-controller="mainController as main">
+	<header>
+		<div class="navigation">
+			<nav class="site-nav">
+				<a ng-href="/"><img class='jiji-logo' src="assets/svg/jiji.svg"></a>
+				<a ng-href="/flashcards" class="btn btn-primary nav-link">Flashcards</a>
+				<a ng-href="/quiz" class="btn btn-primary nav-link">Quiz</a>
+			</nav>
+			<nav class="action-nav">
+				<a class="btn btn-primary nav-link" href="/users" ng-if="!main.loggedIn">SignUp</a>
+				<a class="btn btn-primary nav-link nav-log-user" href="/login" ng-if="!main.loggedIn">Login</a>
+				<a class="btn btn-primary nav-link" ng-if="main.loggedIn" ng-href='/dashboard'>{{ main.user.username }}</a>
+				<a class="btn btn-primary nav-link nav-log-user" href="#" ng-if="main.loggedIn" ng-click="main.doLogout()">Logout</a>
+			</nav>
+		</div>
+	</header>
 
 	<main class="container">
 		<!-- angular views -->
 		<div ng-view></div>
 	</main>
-
 </body>
 </html>

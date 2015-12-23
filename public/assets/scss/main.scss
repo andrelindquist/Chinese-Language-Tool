@@ -1,52 +1,89 @@
 /* Naviagtion & Site Header */
+$nav-height: 60px;
+$mobile-nav-height: 40px;
 
-a:hover, a:visited, a:link, a:active
-{
-    text-decoration: none;
-}
-
-ul {
-	list-style-type: none;
-}
-
-#jiji-image {
-	display: inline;
-	height: 12.5%;
-	width: 12.5%;
-}
-
-#index-header-text {
-	display: inline;
-	font-weight: bold;
-}
-
-.jumbotron {
-	margin-bottom: 0;
+.jiji-logo {
+  display: inline;
+  height: $nav-height;
+  width: $nav-height; 
 }
 
 .navigation {
-	margin-top: 1em;
+  vertical-align: top;
+  height: $nav-height;
+  width: 100%;
+  box-sizing: border-box;
+  background: #dcdcfe; 
+  	nav {
+    display: inline-block; 
+	}
+}
+
+.site-nav {
+  width: 60%; 
+  	.nav-link {
+  		width: 30%;
+  	}
+}
+
+.action-nav {
+  width: 36%;
+  	.nav-link {
+  		width: 40%;
+  	}
 }
 
 .nav-link {
-	display: inline;
+  display: inline-block;
+  height: $nav-height;
+  line-height: $nav-height; /* Used to vertically align text inside of button element- Thanks CSS Tricks! */
+  padding: 0;
+  margin-left: 5px;
 }
 
+@media screen and (max-width: 480px) {
+  /* Index Page Header */
+  .navigation {
+    height: $mobile-nav-height; 
+  }
+
+  .jiji-logo {
+	  display: inline;
+	  height: $mobile-nav-height;
+	  width: $mobile-nav-height; 
+	}
+
+	.nav-link {
+		height: $mobile-nav-height;
+		line-height: $mobile-nav-height; /* Used to vertically align text inside of button element- Thanks CSS Tricks! */
+	}
+
+  .action-nav .nav-log-user {
+    /*display: none; */
+  } 
+}
+
+#index-header-text {
+  display: inline;
+  font-weight: bold; 
+}
+
+
+
 #nav-greeting, #nav-logout {
-	float: right;
-	margin: 0 2px;
+  float: right;
+  margin: 0 2px; 
 }
 
 #nav-logout {
-	margin-right: 5%;
+  margin-right: 5%; 
 }
 
 /** Home Page **/
-
 .mission-statement-div {
-	line-height: 2;
+  line-height: 2; 
 }
 
 .signIn-logIn-bar {
-	margin-left: 10%;
+  margin-left: 10%; 
 }
