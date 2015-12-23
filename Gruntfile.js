@@ -15,15 +15,24 @@ module.exports = function(grunt) {
 	    	dest: 'public/build/js/directives.js'
 	      }
 	    },
+		sass: {
+			dist: {
+			  files: {
+			    'public/build/css/main.css': 'public/assets/scss/main.scss',
+			    // 'widgets.css': 'widgets.scss'
+			  }
+			}
+		},
 		watch: {
 		  js: {
-		    files: ['public/app/controllers/*.js', 'public/app/services/*.js', 'public/app/directives/*.js'],
-		    tasks: ['concat'],
+		    files: ['public/app/controllers/*.js', 'public/app/services/*.js', 'public/app/directives/*.js', 'public/assets/scss/main.scss'],
+		    tasks: ['concat', 'sass'],
 		  },
 		}
 	});
 
 	grunt.loadNpmTasks('grunt-contrib-concat');
 	grunt.loadNpmTasks('grunt-contrib-watch');
+	grunt.loadNpmTasks('grunt-contrib-sass');
 
 };

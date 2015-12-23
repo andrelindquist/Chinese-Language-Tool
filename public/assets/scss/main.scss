@@ -1,0 +1,52 @@
+/* Naviagtion & Site Header */
+
+a:hover, a:visited, a:link, a:active
+{
+    text-decoration: none;
+}
+
+ul {
+	list-style-type: none;
+}
+
+#jiji-image {
+	display: inline;
+	height: 12.5%;
+	width: 12.5%;
+}
+
+#index-header-text {
+	display: inline;
+	font-weight: bold;
+}
+
+.jumbotron {
+	margin-bottom: 0;
+}
+
+.navigation {
+	margin-top: 1em;
+}
+
+.nav-link {
+	display: inline;
+}
+
+#nav-greeting, #nav-logout {
+	float: right;
+	margin: 0 2px;
+}
+
+#nav-logout {
+	margin-right: 5%;
+}
+
+/** Home Page **/
+
+.mission-statement-div {
+	line-height: 2;
+}
+
+.signIn-logIn-bar {
+	margin-left: 10%;
+}
