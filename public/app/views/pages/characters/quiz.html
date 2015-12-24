@@ -76,7 +76,7 @@
 </div>
 
 <quiz-results ng-if="quiz.quiz.quizFinished" ng-model="quiz"></quiz-results>
-<button class="btn btn-primary" id="btn-log-results" ng-if="quiz.quiz.quizFinished && !quiz.logged" ng-click="quiz.logResults(quiz.quiz)">Log Results</button>
+<button class="btn btn-primary" id="btn-log-results" ng-if="quiz.quiz.quizFinished && !quiz.logged && main.loggedIn" ng-click="quiz.logResults(quiz.quiz)">Log Results</button>
 
 
 

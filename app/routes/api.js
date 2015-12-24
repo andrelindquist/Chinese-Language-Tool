@@ -35,8 +35,7 @@ apiRouter.post('/authenticate', function(req, res) {
 	//find the user
 	User.findOne({
 		username: req.body.username
-	}).select('username password').exec(function(err, user) {
-		console.log('test');
+	}).select('username password admin').exec(function(err, user) {
 		if (err) throw err;
 		//unable to find given username
 		if (!user) {
@@ -56,7 +55,8 @@ apiRouter.post('/authenticate', function(req, res) {
 				//if user is found and password is right
 				//create a token
 				var token = jwt.sign({
-					username: user.username
+					username: user.username,
+					admin: user.admin
 				}, superSecret, {
 					expiresInMinutes: 1440 // expires in 24 hours
 				});

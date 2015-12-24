@@ -11,7 +11,6 @@ angular.module('mainCtrl', [])
 		    Auth.getUser()
 		    	.then(function(data) {
 					vm.user = data.data;
-					console.log(vm.user);
 				});
 	});
 
@@ -32,7 +31,6 @@ angular.module('mainCtrl', [])
 	vm.doLogin = function() {
 		//clear the error
 		vm.error = '';
-		console.log(vm.loginData);
 		Auth.login(vm.loginData.username, vm.loginData.password)
 			.success(function(data) {
 				//if a user successfully logs in, redirect to home page
