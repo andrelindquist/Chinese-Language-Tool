@@ -4,7 +4,7 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "postinstall": "echo postinstall time; ./node_modules/grunt-cli/bin/grunt concat",
+    "postinstall": "echo postinstall time; ./node_modules/grunt-cli/bin/grunt concat; ./node_modules/grunt-cli/bin/grunt sass",
     "start": "node server.js"
   },
   "author": "Andre Lindquist",
