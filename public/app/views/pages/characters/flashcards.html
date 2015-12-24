@@ -40,13 +40,13 @@
 			<p ng-show="char.radicals">Radicals: {{ char.radicals }}</p>
 			<p ng-show="char.strokeCount">Stroke Count: {{ char.strokeCount }}</p>
 			<p ng-show="char.category">Category: {{ char.category }}</p>
-			<a ng-href="/characters/{{ char._id }}" class="btn btn-danger">Edit</a>
-			<a href="#" ng-click="character.deleteCharacter(char._id)" class="btn btn-primary">Delete</a>
+			<a ng-if="main.user.admin" ng-href="/characters/{{ char._id }}" class="btn btn-danger">Edit</a>
+			<a ng-if="main.user.admin" href="#" ng-click="character.deleteCharacter(char._id)" class="btn btn-primary">Delete</a>
 		</div>
 	</div>
 </div>
 
 <div id="flashcards-footer">
 	<a ng-href="/characters" class="btn btn-danger">Table View</a>
-	<a class="btn btn-danger" href="/characters/create" class="btn btn-default">Add Character (Manually)</a>
+	<a ng-show="main.user.admin" class="btn btn-danger" href="/characters/create" class="btn btn-default">Add Character (Manually)</a>
 </div>
