@@ -43,12 +43,12 @@ $nav-border-bottom: 2px solid #9a9aea;
   line-height: $nav-height; /* Used to vertically align text inside of button element- Thanks CSS Tricks! */
   padding: 0;
   margin-left: 5px;
-  border-bottom: 2px solid #9a9aea; 
+  border-bottom: $nav-border-bottom; 
 }
 
 .button {
 	font-weight: 600;
-	color: #565656;
+	color: #454545;
 	cursor: pointer;
 	vertical-align: middle;
 	text-align: center;
@@ -63,15 +63,30 @@ $nav-border-bottom: 2px solid #9a9aea;
 }
 
 .nav-signup {
-	color: #343434;
 	background-color: #bbd1cb;
-	border: solid #9a9aea;    /*change to border left and right */
-	border-width: 0 2px 2px 2px;
-	border-radius: 4px; 
+	border-bottom: $nav-border-bottom;
+}
+
+/* Styles for all pages */
+.page-title {
+    font-size: 40px;
+    font-weight: bold;
+    letter-spacing: -0.02em;
 }
 
 a:hover, a:focus {
 	text-decoration: none;
+}
+
+/** Home Page **/
+
+.mission-statement {
+  line-height: 2; 
+  font-size: 1.2em;
+}
+
+.signIn-logIn-bar {
+  margin-left: 10%; 
 }
 
 @media screen and (max-width: 480px) {
@@ -87,6 +102,7 @@ a:hover, a:focus {
 	}
 
 	.nav-link {
+		font-weight: 400;
 		height: $mobile-nav-height;
 		line-height: $mobile-nav-height; /* Used to vertically align text inside of button element- Thanks CSS Tricks! */
 	}
@@ -95,13 +111,14 @@ a:hover, a:focus {
 		width: 36%;
 		font-size: 12px;
 	}
-}
 
-/** Home Page **/
-.mission-statement-div {
-  line-height: 2; 
-}
+	/* Styles for all pages */
+	.page-title {
+	    font-size: 24px;
+	}
 
-.signIn-logIn-bar {
-  margin-left: 10%; 
+	/** Home Page **/
+	.mission-statement {
+		font-size: 0.9em;
+	}
 }
