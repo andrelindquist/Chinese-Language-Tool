@@ -1,0 +1,124 @@
+/* Naviagtion & Site Header */
+$nav-height: 60px;
+$mobile-nav-height: 40px;
+$nav-border-bottom: 2px solid #9a9aea;
+
+.jiji-logo {
+  display: inline;
+  height: $nav-height;
+  width: $nav-height; 
+  margin-left: 10px;
+  border-bottom: $nav-border-bottom;
+}
+
+.navigation {
+  vertical-align: top;
+  height: $nav-height;
+  width: 100%;
+  box-sizing: border-box;
+  background: #dcdcfe;
+  border-bottom: $nav-border-bottom;
+  	nav {
+    	display: inline-block; 
+	}
+}
+
+.site-nav {
+  width: 60%; 
+  	.nav-link {
+  		width: 24%;
+  	}
+}
+
+.action-nav {
+  width: 36%;
+  	.nav-link {
+  		width: 42%;
+  	}
+}
+
+.nav-link {
+  display: inline-block;
+  height: $nav-height;
+  line-height: $nav-height; /* Used to vertically align text inside of button element- Thanks CSS Tricks! */
+  padding: 0;
+  margin-left: 5px;
+  border-bottom: $nav-border-bottom; 
+}
+
+.button {
+	font-weight: 600;
+	color: #454545;
+	cursor: pointer;
+	vertical-align: middle;
+	text-align: center;
+	-webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    	&:hover, &:focus {
+    		background-color: #cdcdfe;
+    		color: #343434;
+    	}
+}
+
+.nav-signup {
+	background-color: #bbd1cb;
+	border-bottom: $nav-border-bottom;
+}
+
+/* Styles for all pages */
+.page-title {
+    font-size: 40px;
+    font-weight: bold;
+    letter-spacing: -0.02em;
+}
+
+a:hover, a:focus {
+	text-decoration: none;
+}
+
+/** Home Page **/
+
+.mission-statement {
+  line-height: 2; 
+  font-size: 1.2em;
+}
+
+.signIn-logIn-bar {
+  margin-left: 10%; 
+}
+
+@media screen and (max-width: 480px) {
+  /* Index Page Header */
+  .navigation {
+    height: $mobile-nav-height; 
+  }
+
+  .jiji-logo {
+	  display: inline;
+	  height: $mobile-nav-height;
+	  width: $mobile-nav-height; 
+	}
+
+	.nav-link {
+		font-weight: 400;
+		height: $mobile-nav-height;
+		line-height: $mobile-nav-height; /* Used to vertically align text inside of button element- Thanks CSS Tricks! */
+	}
+
+	.site-nav .nav-flashcards {
+		width: 36%;
+		font-size: 12px;
+	}
+
+	/* Styles for all pages */
+	.page-title {
+	    font-size: 24px;
+	}
+
+	/** Home Page **/
+	.mission-statement {
+		font-size: 0.9em;
+	}
+}
