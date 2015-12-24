@@ -1,11 +1,14 @@
 /* Naviagtion & Site Header */
 $nav-height: 60px;
 $mobile-nav-height: 40px;
+$nav-border-bottom: 2px solid #9a9aea;
 
 .jiji-logo {
   display: inline;
   height: $nav-height;
   width: $nav-height; 
+  margin-left: 10px;
+  border-bottom: $nav-border-bottom;
 }
 
 .navigation {
@@ -13,23 +16,24 @@ $mobile-nav-height: 40px;
   height: $nav-height;
   width: 100%;
   box-sizing: border-box;
-  background: #dcdcfe; 
+  background: #dcdcfe;
+  border-bottom: $nav-border-bottom;
   	nav {
-    display: inline-block; 
+    	display: inline-block; 
 	}
 }
 
 .site-nav {
   width: 60%; 
   	.nav-link {
-  		width: 30%;
+  		width: 24%;
   	}
 }
 
 .action-nav {
   width: 36%;
   	.nav-link {
-  		width: 40%;
+  		width: 42%;
   	}
 }
 
@@ -39,6 +43,35 @@ $mobile-nav-height: 40px;
   line-height: $nav-height; /* Used to vertically align text inside of button element- Thanks CSS Tricks! */
   padding: 0;
   margin-left: 5px;
+  border-bottom: 2px solid #9a9aea; 
+}
+
+.button {
+	font-weight: 600;
+	color: #565656;
+	cursor: pointer;
+	vertical-align: middle;
+	text-align: center;
+	-webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    	&:hover, &:focus {
+    		background-color: #cdcdfe;
+    		color: #343434;
+    	}
+}
+
+.nav-signup {
+	color: #343434;
+	background-color: #bbd1cb;
+	border: solid #9a9aea;    /*change to border left and right */
+	border-width: 0 2px 2px 2px;
+	border-radius: 4px; 
+}
+
+a:hover, a:focus {
+	text-decoration: none;
 }
 
 @media screen and (max-width: 480px) {
@@ -58,25 +91,10 @@ $mobile-nav-height: 40px;
 		line-height: $mobile-nav-height; /* Used to vertically align text inside of button element- Thanks CSS Tricks! */
 	}
 
-  .action-nav .nav-log-user {
-    /*display: none; */
-  } 
-}
-
-#index-header-text {
-  display: inline;
-  font-weight: bold; 
-}
-
-
-
-#nav-greeting, #nav-logout {
-  float: right;
-  margin: 0 2px; 
-}
-
-#nav-logout {
-  margin-right: 5%; 
+	.site-nav .nav-flashcards {
+		width: 36%;
+		font-size: 12px;
+	}
 }
 
 /** Home Page **/

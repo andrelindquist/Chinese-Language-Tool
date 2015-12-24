@@ -61,15 +61,15 @@
 	<header>
 		<div class="navigation">
 			<nav class="site-nav">
-				<a ng-href="/"><img class='jiji-logo' src="assets/svg/jiji.svg"></a>
-				<a ng-href="/flashcards" class="btn btn-primary nav-link">Flashcards</a>
-				<a ng-href="/quiz" class="btn btn-primary nav-link">Quiz</a>
+				<a ng-href="/"><img class='button jiji-logo' src="assets/svg/jiji.svg"></a>
+				<a ng-href="/flashcards" class="button nav-link nav-flashcards">Flashcards</a>
+				<a ng-href="/quiz" class="button nav-link nav-link">Quiz</a>
 			</nav>
 			<nav class="action-nav">
-				<a class="btn btn-primary nav-link" href="/users" ng-if="!main.loggedIn">SignUp</a>
-				<a class="btn btn-primary nav-link nav-log-user" href="/login" ng-if="!main.loggedIn">Login</a>
-				<a class="btn btn-primary nav-link" ng-if="main.loggedIn" ng-href='/dashboard'>{{ main.user.username }}</a>
-				<a class="btn btn-primary nav-link nav-log-user" href="#" ng-if="main.loggedIn" ng-click="main.doLogout()">Logout</a>
+				<a class="button nav-link nav-signup" href="/users" ng-if="!main.loggedIn">SignUp</a>
+				<a class="button nav-link nav-log-user" href="/login" ng-if="!main.loggedIn">Login</a>
+				<a class="button nav-link" ng-if="main.loggedIn" ng-href='/dashboard'>{{ main.user.username }}</a>
+				<a class="button nav-link nav-log-user" href="#" ng-if="main.loggedIn" ng-click="main.doLogout()">Logout</a>
 			</nav>
 		</div>
 	</header>
