@@ -36,6 +36,7 @@ apiRouter.post('/authenticate', function(req, res) {
 	User.findOne({
 		username: req.body.username
 	}).select('username password').exec(function(err, user) {
+		console.log('test');
 		if (err) throw err;
 		//unable to find given username
 		if (!user) {
@@ -64,7 +65,8 @@ apiRouter.post('/authenticate', function(req, res) {
 				res.json({
 					success: true,
 					message: 'Enjoy your token!',
-					token: token
+					token: token,
+					admin: user.admin
 				});
 			}
 		}
