@@ -3,6 +3,10 @@
 
 <div class="quiz-dashboard" ng-hide="quiz.quiz.quizActive || quiz.quiz.quizFinished">
 	<ul class="quiz-input-list">
+
+		<!-- Reintroduce the filter quiz feature later
+			-TODO need to enter categories for the characters
+			-TODO filter by strokecount should select a range of stroke #'s rather than choosing one #.
 		<li class="quiz-li">Filter By			
 			<select ng-model="quiz.key">
 				<option value="">None</option>
@@ -28,14 +32,17 @@
 				<option value="Clothing">Clothing</option>
 				<option value="Other">Other</option>
 			</select>
-		</li>
+		</li> -->
 
 		<li class="quiz-li" ng-if="quiz.key == 'strokeCount'">Stroke Count
 			<input class="quiz-input" ng-if="quiz.key == 'strokeCount'" ng-model="quiz.value" id="value"></input>
 		</li>
 
 		<li class="quiz-li">Quiz Type
-		    <select ng-model="quiz.criteria" ng-change="quiz.makeUserCriteria(quiz.criteria)">
+			<select ng-if="!main.loggedIn">
+				<option value="">Log in to make personalized quizzes</option>
+			</select>
+		    <select ng-if="main.loggedIn" ng-model="quiz.criteria" ng-change="quiz.makeUserCriteria(quiz.criteria)">
 		    	<option value=""></option>
 				<option value="new">New</option>
 				<option value="reviewStageI">Review I</option>
@@ -50,7 +57,7 @@
 		</li>
 
 		<li class="quiz-li">
-			<button class="button-generate-quiz" ng-click="quiz.makeQuiz(quiz.key, quiz.value, quiz.number, quiz.criteria)">Generate Quiz!</button>
+			<button class="button" ng-click="quiz.makeQuiz(quiz.key, quiz.value, quiz.number, quiz.criteria)">Start Quiz!</button>
 		</li>
 	</ul>
 </div>

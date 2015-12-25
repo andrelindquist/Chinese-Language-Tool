@@ -37,34 +37,39 @@ $nav-border-bottom: 2px solid #9a9aea;
   	}
 }
 
+.button {
+  padding: 8px 14px;
+  border: 1px solid #454545;
+  border-radius: 5px;
+  font-weight: 600;
+  color: #454545;
+  cursor: pointer;
+  vertical-align: middle;
+  text-align: center;
+  -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+      &:hover, &:focus {
+        background-color: #cdcdfe;
+        color: #343434;
+      }
+}
+
 .nav-link {
   display: inline-block;
   height: $nav-height;
   line-height: $nav-height; /* Used to vertically align text inside of button element- Thanks CSS Tricks! */
   padding: 0;
   margin-left: 5px;
+  border-radius: 0; /* cancel border styles from button class and make own border-bottom style -- TODO rewrite more elegantly so not to require this overwrite */
+  border: none;
   border-bottom: $nav-border-bottom; 
 }
 
-.button {
-	font-weight: 600;
-	color: #454545;
-	cursor: pointer;
-	vertical-align: middle;
-	text-align: center;
-	-webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    	&:hover, &:focus {
-    		background-color: #cdcdfe;
-    		color: #343434;
-    	}
-}
-
-.nav-signup {
+.signup-button {
 	background-color: #bbd1cb;
-	border-bottom: $nav-border-bottom;
+  color: #000038;
 }
 
 /* Styles for all pages */
@@ -87,6 +92,10 @@ a:hover, a:focus {
 
 .signIn-logIn-bar {
   margin-left: 10%; 
+}
+
+li {  /* Takes away the bulets from answer choices on quiz page */
+  list-style: none;
 }
 
 @media screen and (max-width: 480px) {
