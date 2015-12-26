@@ -15,6 +15,7 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 	<link rel="stylesheet" href="assets/css/style.css">
 	<link rel="stylesheet" href="build/css/main.css">
+	<link rel="stylesheet" href="build/css/quiz.css">
 	
 	<!-- JS -->
 	<!-- load angular and our custom application -->
@@ -68,7 +69,7 @@
 			<nav class="action-nav">
 				<a class="button nav-link signup-button" href="/users" ng-if="!main.loggedIn">SignUp</a>
 				<a class="button nav-link nav-log-user" href="/login" ng-if="!main.loggedIn">Login</a>
-				<a class="button nav-link signup-button" ng-if="main.loggedIn" ng-href='/dashboard'>{{ main.user.username }}</a>
+				<a class="button nav-link signup-button" ng-if="main.loggedIn" ng-href='/dashboard'>{{ main.user.username }}<!-- TODO add an icon for account --></a>
 				<a class="button nav-link nav-log-user" href="#" ng-if="main.loggedIn" ng-click="main.doLogout()">Logout</a>
 			</nav>
 		</div>

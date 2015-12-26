@@ -3,9 +3,7 @@ directive('quizResults', function() {
   return {
     restrict: 'EA',
     require: '^ngModel',
-    scope: {
-      ngModel: '='
-    },
+    scope: false,
     templateUrl: 'app/views/templates/results.html'
   }  
 });

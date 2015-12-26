@@ -1,23 +1,16 @@
 /* Naviagtion & Site Header */
 $nav-height: 60px;
 $mobile-nav-height: 40px;
-$nav-border-bottom: 2px solid #9a9aea;
-
-.jiji-logo {
-  display: inline;
-  height: $nav-height;
-  width: $nav-height; 
-  margin-left: 10px;
-  border-bottom: $nav-border-bottom;
-}
+$nav-border: 2px solid #9a9aea;
+$nav-back-color: #dcdcfe;
 
 .navigation {
   vertical-align: top;
   height: $nav-height;
   width: 100%;
   box-sizing: border-box;
-  background: #dcdcfe;
-  border-bottom: $nav-border-bottom;
+  background: $nav-back-color;
+  border-bottom: $nav-border;
   	nav {
     	display: inline-block; 
 	}
@@ -64,7 +57,7 @@ $nav-border-bottom: 2px solid #9a9aea;
   margin-left: 5px;
   border-radius: 0; /* cancel border styles from button class and make own border-bottom style -- TODO rewrite more elegantly so not to require this overwrite */
   border: none;
-  border-bottom: $nav-border-bottom; 
+  border-bottom: $nav-border; 
 }
 
 .signup-button {
@@ -74,6 +67,7 @@ $nav-border-bottom: 2px solid #9a9aea;
 
 /* Styles for all pages */
 .page-title {
+    text-align: center;
     font-size: 40px;
     font-weight: bold;
     letter-spacing: -0.02em;
@@ -86,6 +80,7 @@ a:hover, a:focus {
 /** Home Page **/
 
 .mission-statement {
+  width: 60%;
   line-height: 2; 
   font-size: 1.2em;
 }
@@ -104,12 +99,6 @@ li {  /* Takes away the bulets from answer choices on quiz page */
     height: $mobile-nav-height; 
   }
 
-  .jiji-logo {
-	  display: inline;
-	  height: $mobile-nav-height;
-	  width: $mobile-nav-height; 
-	}
-
 	.nav-link {
 		font-weight: 400;
 		height: $mobile-nav-height;
@@ -126,8 +115,9 @@ li {  /* Takes away the bulets from answer choices on quiz page */
 	    font-size: 24px;
 	}
 
-	/** Home Page **/
+	/** Home Page ****/
 	.mission-statement {
+    width: 100%;
 		font-size: 0.9em;
 	}
 }

@@ -1,7 +1,7 @@
 <div class="quiz-summary-container">
-	<h2 class="quiz-summary-header">You answered {{ngModel.quiz.correctCount}} out of {{ngModel.quiz.questions.length}} questions correctly.</h2>
+	<h2 class="quiz-summary-header">You answered {{quiz.quiz.correctCount}} out of {{quiz.quiz.questions.length}} questions correctly.</h2>
 
-	<ul class="quiz-summary-question" ng-repeat="question in ngModel.quiz.questions">
+	<ul class="quiz-summary-question" ng-repeat="question in quiz.quiz.questions">
 		<li>
 			<audio-button class="audio" data-ng-click="update(); play()" pronunciation="{{question.pronunciation}}" address="http://humanum.arts.cuhk.edu.hk/Lexis/Canton/sound/">
 				<h1 ng-class="{'english-question': question.questionType == 2}">{{question.question}}</h1>
@@ -11,5 +11,7 @@
 			<h3 ng-repeat="choice in question.choices" class="quiz-summary-choice" ng-class="{'quiz-answer': choice == question.answer, 'quiz-attempted': choice == question.attemptedAnswer, 'english-answers': question.questionType == 1}">{{choice}}</h3>
 		</li>
 	</ul>
+	<button class="button" ng-if="quiz.quiz.quizFinished && !quiz.logged && main.loggedIn" ng-click="quiz.logResults(quiz.quiz)">Log Results</button>
+	<button class="button" ng-click="quiz.quiz.quizFinished = false">Close Summary</button>	
 </div>
-<button id="btn-close-results" class="btn btn-primary" ng-click="ngModel.quiz.quizFinished = false">Close Summary</button>
+

@@ -1,5 +1,5 @@
 
-<h2 class="page-title">Quiz Generator</h2>
+<h2 class="page-title">Take A Quiz</h2>
 
 <div class="quiz-dashboard" ng-hide="quiz.quiz.quizActive || quiz.quiz.quizFinished">
 	<ul class="quiz-input-list">
@@ -32,18 +32,24 @@
 				<option value="Clothing">Clothing</option>
 				<option value="Other">Other</option>
 			</select>
-		</li> -->
+		</li> 
 
 		<li class="quiz-li" ng-if="quiz.key == 'strokeCount'">Stroke Count
 			<input class="quiz-input" ng-if="quiz.key == 'strokeCount'" ng-model="quiz.value" id="value"></input>
 		</li>
 
-		<li class="quiz-li">Quiz Type
-			<select ng-if="!main.loggedIn">
-				<option value="">Log in to make personalized quizzes</option>
+		-->
+
+		<li class="quiz-li">Question Criteria
+			<span style="color: #ffffff">i</span>  <!--TODO- find an 'info' icon
+													on-click/hover expand an info which describes the different quiz types
+													if user is logged in, else explain only the random and say log in 
+													to take custom quizzes -->
+			<select class="quiz-input" ng-if="!main.loggedIn">
+				<option value="">Random</option>
 			</select>
-		    <select ng-if="main.loggedIn" ng-model="quiz.criteria" ng-change="quiz.makeUserCriteria(quiz.criteria)">
-		    	<option value=""></option>
+		    <select class="quiz-input" ng-if="main.loggedIn" ng-model="quiz.criteria" ng-change="quiz.makeUserCriteria(quiz.criteria)">
+		    	<option value="">Random</option>
 				<option value="new">New</option>
 				<option value="reviewStageI">Review I</option>
 				<option value="reviewStageII">Review II</option>
@@ -52,12 +58,12 @@
 			</select>
 		</li>
 
-		<li class="quiz-li"># of Questions 
-			<input class="quiz-input" ng-model="quiz.number" id="number" ng-init="quiz.number='5'"></input>
+		<li class="quiz-li">No. of Questions 
+			<input class="quiz-input input-no" ng-model="quiz.number" id="number" ng-init="quiz.number='5'"></input>
 		</li>
 
 		<li class="quiz-li">
-			<button class="button" ng-click="quiz.makeQuiz(quiz.key, quiz.value, quiz.number, quiz.criteria)">Start Quiz!</button>
+			<button class="button" ng-click="quiz.makeQuiz(quiz.key, quiz.value, quiz.number, quiz.criteria)">Start!</button>
 		</li>
 	</ul>
 </div>
@@ -72,17 +78,17 @@
 
 	 	<li>
 	 		<div class="quiz-nav-div">
-			 	<button class="quiz-previous-button" ng-click="quiz.previousQuestion()" ng-hide="quiz.quiz.questionIndex === 0">Previous</button>
-			 	<button class="quiz-next-button" ng-click="quiz.nextQuestion()" ng-hide="quiz.quiz.questionIndex === quiz.quiz.questions.length - 1">Next</button>
+			 	<button class="button inactive-button quiz-previous-button" ng-click="quiz.previousQuestion()" ng-class="{'inactive-button': quiz.quiz.questionIndex === 0}">Previous</button>
+			 	<button class="button quiz-next-button" ng-click="quiz.nextQuestion()" ng-class="{'inactive-button': quiz.quiz.questionIndex === quiz.quiz.questions.length - 1}">Next</button>
 			</div>
 		</li>
-		<li><button class="quiz-finish" ng-click="quiz.finishQuiz()">Done</button></li>
+		<div style="height: 40px;"><button class="button quiz-finish" ng-click="quiz.finishQuiz()">Done</button></div>
 	</ul>
 
 </div>
 
 <quiz-results ng-if="quiz.quiz.quizFinished" ng-model="quiz"></quiz-results>
-<button class="btn btn-primary" id="btn-log-results" ng-if="quiz.quiz.quizFinished && !quiz.logged && main.loggedIn" ng-click="quiz.logResults(quiz.quiz)">Log Results</button>
+
 
 
 

@@ -19,13 +19,14 @@ module.exports = function(grunt) {
 			dist: {
 			  files: {
 			    'public/build/css/main.css': 'public/assets/scss/main.scss',
+			    'public/build/css/quiz.css': 'public/assets/scss/quiz.scss'
 			    // 'widgets.css': 'widgets.scss'
 			  }
 			}
 		},
 		watch: {
 		  js: {
-		    files: ['public/app/controllers/*.js', 'public/app/services/*.js', 'public/app/directives/*.js', 'public/assets/scss/main.scss'],
+		    files: ['public/app/controllers/*.js', 'public/app/services/*.js', 'public/app/directives/*.js', 'public/assets/scss/main.scss', 'public/assets/scss/quiz.scss'],
 		    tasks: ['concat', 'sass'],
 		  },
 		}
