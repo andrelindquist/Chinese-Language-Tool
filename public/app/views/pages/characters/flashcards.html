@@ -1,32 +1,29 @@
-<div class="page-header">
-	<h2 class="page-title">Flash Cards</h2>
-	<div>
+<h2 class="page-title">Flash Cards</h2>
+<div class="flashcard-dashboard">
 <!-- 		Key<input ng-model="character.key" id="key"></input>       !!!MAY ADD BACK LATER- NOT ESSENTIAL  !!!ALSO ADD SEARCH FUNCTION LATER
-		Value<input ng-model="character.value" id="value"></input>
-		<button ng-click="character.getData(character.key, character.value)">Count</button>
-		<p ng-show="character.countResult.calculated">{{character.countResult.message}}</p>
-		<br></br> -->
-		
-		<!-- Character Adder -->
-		<div ng-controller="addCharController as characterAdder">
-			<input class="flash-add-input" type="text" ng-model="characterAdder.symbol">
-			<button ng-click="characterAdder.addChar()">Add Character</button>
+	Value<input ng-model="character.value" id="value"></input>
+	<button ng-click="character.getData(character.key, character.value)">Count</button>
+	<p ng-show="character.countResult.calculated">{{character.countResult.message}}</p>
+	<br></br> -->
+	<div class="flashcard-controls">
+		<input class="flash-dash-choice quiz-input" ng-model="filterQuery" type="text" placeholder="Filter by">
+        <input class="flash-dash-choice quiz-input" ng-model="sortQuery" type="text" placeholder="Sort by">
+    </div>
+	<!-- Character Adder -->
+	<div class="char-adder" ng-controller="addCharController as characterAdder">
+		<input class="quiz-input flash-add-input" type="text" ng-model="characterAdder.symbol">
+		<button class="button button-add-char" ng-click="characterAdder.addChar()">Add Character</button>
 
-  			<button ng-model="collapsed" ng-click="collapsed=!collapsed">?</button>
-    		<div ng-show="collapsed">If there is a character you'd like to see in the Flashcards, copy it and paste it here.  It should show up below almost instantaneously</div>
+			<button ng-model="collapsed" ng-click="collapsed=!collapsed">?</button>
+		<div ng-show="collapsed">If there is a character you'd like to see in the Flashcards, copy it and paste it here.  It should show up below almost instantaneously</div>
 
-		</div>
-
-		<!-- Test Loading -->
-		<div class="loading-add-char" ng-show="character.loading">Loading!!!!</div>
-
-		<input class="flash-dash-choice" ng-model="filterQuery" type="text" 
-        placeholder="Filter by">
-        <input class="flash-dash-choice" ng-model="sortQuery" type="text" placeholder="Sort by">
 	</div>
+
+	<!-- Test Loading -->
+	<div class="loading-add-char" ng-show="character.loading">Loading!!!!</div>
 </div>
 
- <div id="flash-card-wrapper" class="container-fluid" ng-show"character.characters">
+ <div class="flashcards-container" ng-show"character.characters">
 	<div class="flash-card" ng-repeat="char in character.characters | filter:filterQuery | orderBy:sortQuery">
 		<button class="symbol" ng-click="showDetails = !showDetails" ng-class="{'active-flashcard': showDetails}">{{ char.symbol }}</button>
 	<!--Show Details on-click & add active-flashcard class to .symbol button-->
@@ -40,13 +37,13 @@
 			<p ng-show="char.radicals">Radicals: {{ char.radicals }}</p>
 			<p ng-show="char.strokeCount">Stroke Count: {{ char.strokeCount }}</p>
 			<p ng-show="char.category">Category: {{ char.category }}</p>
-			<a ng-if="main.user.admin" ng-href="/characters/{{ char._id }}" class="btn btn-danger">Edit</a>
-			<a ng-if="main.user.admin" href="#" ng-click="character.deleteCharacter(char._id)" class="btn btn-primary">Delete</a>
+			<a ng-if="main.user.admin" ng-href="/characters/{{ char._id }}" class="button">Edit</a>
+			<a ng-if="main.user.admin" href="#" ng-click="character.deleteCharacter(char._id)" class="button button-delete">Delete</a>
 		</div>
 	</div>
 </div>
 
-<div id="flashcards-footer">
+<div class="flashcards-footer">
 	<a ng-href="/characters" class="button">Table View</a>
 	<a ng-show="main.user.admin" class="button" href="/characters/create" class="btn btn-default">Add Character (Manually)</a>
 </div>

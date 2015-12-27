@@ -77,10 +77,17 @@ a:hover, a:focus {
 	text-decoration: none;
 }
 
+button, input, select {
+  &:focus {
+    outline: 0;
+  }
+}
+
 /** Home Page **/
 
 .mission-statement {
-  width: 60%;
+  margin: 10px auto;
+  width: 70%;
   line-height: 2; 
   font-size: 1.2em;
 }

@@ -1,9 +1,12 @@
-
-
-/**  Flash Cards View  **/
+/****  Flash Cards View  ***/
+.flashcards-container {
+	display: table;
+	margin: 0 auto;
+	padding: 0 15px;
+}
 
 .flash-card {
-	border: 2px #afafcf solid;
+	border: $nav-border;
 	border-radius: .4em;
 	margin: 1px 2px;
 	width: 8%;
@@ -19,17 +22,36 @@
 	cursor: pointer;
 }
 
-.page-header {
-	margin: 0;
-	border: 0;
+.flashcard-dashboard {
+	margin: 0 auto 15px auto;
+	width: 85%;
 }
 
 .flash-add-input {
+	margin: 0;
+	height: 40px;
 	width: 30px;
+	font-size: 1.3em;
+}
+
+.button-add-char {
+	margin-left: -6px;  //hack to remove space between button and input
+	background-color: #f4f4f4;
+	border: none;
+	border-radius: 5px;
 }
 
 .flash-dash-choice {
 	display: block;
+}
+
+.char-adder {
+	display: inline-block;
+	float: right;
+}
+
+.flashcard-controls {
+	display: inline-block;
 }
 
 #add-character {
@@ -39,7 +61,7 @@
 
 .flashcard-details {
 	background: #ededff;
-	border: 2px solid #ababdf;
+	border: $nav-border;
 	border-radius: 5px;
 	padding: 10px;
 	position: absolute;
@@ -50,8 +72,13 @@
 	background-color: #ededff;
 }
 
-#flash-pronounciation {
+.flashcards-footer {
+	margin-top: 1em;
+	
+}
 
+.button-delete {
+	background-color: #df6478;
 }
 
 /*Char Add Loading Animation*/
@@ -66,10 +93,6 @@
     transform: translate(20px);
   }
 }
-
-/*User Signup Form Animation*/
-
-
 
 /* User Dashboard */
 .dash-table td, th{
@@ -88,13 +111,6 @@
 /************ Media Queries ***********/
 /* Smartphones (portrait and landscape) ----------- */
 @media screen and (max-width: 480px) {
-	/* Index Page Header */
-
-
-	.jumbotron {
-		padding: 5px;
-	}
-
 	/*Flash Cards Page*/
 	.flash-card {
 		width: 18%;
@@ -109,13 +125,21 @@
 		margin: 3px;
 	}
 
+	.flashcard-dashboard {
+		width: 100%;
+	}
+
+	.flash-dash-choice {
+		width: 100px;
+	}
+
 	.flashcard-details { /*stops collapsible flashcard content from being squished on the right side of the screen*/
 		text-align: center;
 		margin: 0 auto;
 	    left: 0;
 	    right: 0;
 	}
-
+}
 /* Tablets etc */
  @media screen and (min-width:480px) and (max-width:900px) {
 	/*Flash Cards Page*/

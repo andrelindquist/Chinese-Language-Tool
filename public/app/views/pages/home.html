@@ -5,14 +5,15 @@
 	<p>Wouldn't it be cool to know how to read Chinese?  Impress your friends?  Gain insight into a culture which makes up nearly 20% of the world population?</p>
 	<p>Okay not so fast.  I can't guarantee that you'll become a master poet, but using this site can help you read & recognize the written Chinese language</p>
 	<p>You might be suprised what you can pick up, even without much effort, just by spending five minutes now and then looking through the flashcards and clicking through the quizzes on this site</p>
+
+	<div class="signIn-logIn-bar" ng-if="!main.loggedIn">
+		<a href="/login" class="button">Login</a>
+		<a href="/users" class="button signup-button">Sign Up</a>
+	</div>
+
+	<div ng-if="main.loggedIn">
+		<p>Welcome back {{main.user.username}},</p>
+		<a class="button" href="/dashboard">Check your progress?</a>
+	</div>
 </div>
 
-<div class="signIn-logIn-bar" ng-if="!main.loggedIn">
-	<a href="/login" class="button">Login</a>
-	<a href="/users" class="button signup-button">Sign Up</a>
-</div>
-
-<div ng-if="main.loggedIn">
-	<p>Welcome back {{main.user.username}},</p>
-	<a class="button" href="/dashboard">Check your progress?</a>
-</div>

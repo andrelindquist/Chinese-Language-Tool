@@ -5,9 +5,9 @@
 	position: relative;
 	margin: 0 auto;
 	margin-top: 2em;
-	background: #dcdcfe; //$nav-back-color
+	background: $nav-back-color;
 	padding: 1em;
-	border: 2px solid #9a9aea; //$nav-border
+	border: $nav-border;
 	border-radius: 5px;
 	width: 30%;
 }
@@ -18,10 +18,12 @@
 }
 
 .quiz-input {
+	background: #f4f4f4;
     padding: 2px;
     margin: 5px;
     border: none;
-    border-bottom: 2px solid #9a9aea; //$nav-border
+    border-bottom: $nav-border;
+    cursor: pointer;
     	&.input-no {
     		width: 50px;
     	}
@@ -32,8 +34,8 @@
 	position: relative;
 	margin: 0 auto;
 	margin-top: 2em;
-	background: #dcdcfe; //$nav-back-color
-	border: 2px solid #9a9aea; //$nav-border
+	background: $nav-back-color;
+	border: $nav-border;
 	border-radius: 5px;
 	width: 55%;
 }
