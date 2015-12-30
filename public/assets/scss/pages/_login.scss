@@ -1,0 +1,17 @@
+.login-form {
+  padding: 40px;
+  border: $nav-border;
+  border-radius: 5px;
+  background: $nav-back-color;
+  margin: 0 auto;
+  width: 40%;
+  margin-bottom: 1em;
+}
+
+@media screen and (max-width: 480px) {
+  .login-form {
+    padding: 5px;
+    border-radius: 5px;
+    width: 100%;
+  }
+}
