@@ -69,7 +69,7 @@
 </div>
 
  <div class="quiz-container" ng-show="quiz.quiz.quizActive">
- 	<audio-button class="audio" data-ng-click="update(); quizPlay()" attempted="{{quiz.quiz.questions[quiz.quiz.questionIndex].attemptedAnswer}}" pronunciation="{{quiz.quiz.questions[quiz.quiz.questionIndex].pronunciation}}" address="http://humanum.arts.cuhk.edu.hk/Lexis/Canton/sound/"><h1 class="quiz-question" ng-class="{'english-question': quiz.quiz.questions[quiz.quiz.questionIndex].questionType == 2}">{{quiz.quiz.currentQuestion.question}}</h1></audio-button>   <!--When using local audio files: address="../../../assets/audio/"-->
+ 	<audio-button class="audio" data-ng-click="update(); quizPlay()" attempted="{{quiz.quiz.questions[quiz.quiz.questionIndex].attemptedAnswer}}" pronunciation="{{quiz.quiz.questions[quiz.quiz.questionIndex].pronunciation}}" address="https://humanum.arts.cuhk.edu.hk/Lexis/Canton/sound/"><h1 class="quiz-question" ng-class="{'english-question': quiz.quiz.questions[quiz.quiz.questionIndex].questionType == 2}">{{quiz.quiz.currentQuestion.question}}</h1></audio-button>   <!--When using local audio files: address="../../../assets/audio/"-->
  	<ul class="quiz-answer-choices" ng-class="{'english-answers': quiz.quiz.questions[quiz.quiz.questionIndex].questionType == 1}">
 	 	<li><h3 class="quiz-answer-choice" ng-click="quiz.checkAnswer(quiz.quiz.currentQuestion.choices[0])" tabindex="1">{{quiz.quiz.currentQuestion.choices[0]}}</h3></li>
 	 	<li><h3 class="quiz-answer-choice" ng-click="quiz.checkAnswer(quiz.quiz.currentQuestion.choices[1])" tabindex="2">{{quiz.quiz.currentQuestion.choices[1]}}</h3></li>

@@ -1,0 +1,53 @@
+.navigation {
+  vertical-align: top;
+  height: $nav-height;
+  width: 100%;
+  box-sizing: border-box;
+  background: $nav-back-color;
+  border-bottom: $nav-border;
+  	nav {
+    	display: inline-block; 
+	}
+}
+
+.site-nav {
+  width: 60%; 
+  	.nav-link {
+  		width: 24%;
+  	}
+}
+
+.action-nav {
+  width: 36%;
+  	.nav-link {
+  		width: 42%;
+  	}
+}
+
+.nav-link {
+  display: inline-block;
+  height: $nav-height;
+  line-height: $nav-height; /* Used to vertically align text inside of button element- Thanks CSS Tricks! */
+  padding: 0;
+  margin-left: 5px;
+  border-radius: 0; /* cancel border styles from button class and make own border-bottom style -- TODO rewrite more elegantly so not to require this overwrite */
+  border: none;
+  border-bottom: $nav-border; 
+}
+
+@media screen and (max-width: 480px) {
+  .navigation {
+    height: $mobile-nav-height; 
+  }
+
+  .nav-link {
+    font-weight: 400;
+    height: $mobile-nav-height;
+    line-height: $mobile-nav-height; /* Used to vertically align text inside of button element- Thanks CSS Tricks! */
+  }
+
+  .site-nav .nav-flashcards {
+    width: 36%;
+    font-size: 12px;
+  }
+}

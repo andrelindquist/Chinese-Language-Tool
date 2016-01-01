@@ -117,6 +117,7 @@ apiRouter.use(function(req, res, next) {
 	// 		}
 		});
 });
+
 //function version of middleware
 function isAuthenticated(req, res, next) {
 		//do logging
@@ -147,7 +148,6 @@ function isAuthenticated(req, res, next) {
 		});
 	}
 }
-
 
 //on routes ending in /users/:user_id
 apiRouter.route('/users/:username')
@@ -181,8 +181,6 @@ apiRouter.route('/users/:username')
 		})
 	})
 
-
-
 	//api endpoint to get user information
 	apiRouter.get('/me', function(req, res) {
 		res.send(req.decoded);
@@ -204,7 +202,6 @@ apiRouter.route('/vocablist/:username')
 			});
 		})
 	})
-
 
 //on routes that end with /characters
 apiRouter.route('/characters')
@@ -249,8 +246,6 @@ apiRouter.route('/characters')
 		});
 	});
 
-
-
 //on routes ending with /characters/:character_id
 //--------------------
 apiRouter.route('/characters/:character_id')
@@ -285,20 +280,15 @@ apiRouter.route('/characters/:character_id')
 			character.dateEdited = new Date();
 			character.editedBy = req.body.username;
 
-
-
-			//save the character
 			character.save(function(err) {
 				if (err) res.send(err);
 
-				//return a message
 				res.json({ message: 'Character Updated.'})
 			});
 		});
 	})
 
 	//delete character with this id
-	//access using DELETE @ http://localhost:8080/api/characters/:character_id
 	.delete(isAuthenticated, function(req, res) {
 		Character.remove({
 			_id: req.params.character_id
@@ -316,8 +306,6 @@ apiRouter.route('/addchar/:symbol')
 		console.log(req.params.symbol);
 //////////Scraping Goes Here///////////////////////////////
 
-		// url = 'http://www.cantonese.sheik.co.uk/dictionary/characters/%E5%B0%84/'; //test url
-		// url = 'http://www.cantonese.sheik.co.uk/dictionary/characters/%E9%9B%BB/';
 		url = 'http://www.cantonese.sheik.co.uk/dictionary/characters/' + encodeURI(req.params.symbol) + '/';
 
 		console.log(url);
@@ -445,7 +433,8 @@ apiRouter.route('/addchar/:symbol')
 					//Regexp's to trim each definition in json.definitions
 					function trimDefs(definitionArray) {
 						for (var b = 0; b < definitionArray.length; b += 1) {
-							while (definitionArray[b].indexOf('<a') > -1) {
+							
+							while (definitionArray[b].indexOf('<a') > -1 && definitionArray[b].indexOf('</a>') > -1) {
 								console.log('we see the <a tag.');
 								var defSubstring = definitionArray[b].substring(definitionArray[b].indexOf('<a'), definitionArray[b].indexOf('</a>'));
 								definitionArray[b] = definitionArray[b].replace(defSubstring, '');

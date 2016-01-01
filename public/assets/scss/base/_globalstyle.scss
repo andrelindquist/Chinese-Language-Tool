@@ -1,0 +1,35 @@
+.container {
+  margin: 0 auto;
+  width: 80%;
+}
+
+.page-title {
+    text-align: center;
+    font-size: 40px;
+    font-weight: bold;
+    letter-spacing: -0.02em;
+}
+
+a, a:hover, a:focus {
+	text-decoration: none;
+}
+
+button, input, select {
+  &:focus {
+    outline: 0;
+  }
+}
+
+li {  /* Takes away the bulets from answer choices on quiz page */
+  list-style: none;
+}
+
+@media screen and (max-width: 480px) {
+  .container {
+    width: 90%;
+  }
+
+	.page-title {
+	    font-size: 24px;
+	}
+}

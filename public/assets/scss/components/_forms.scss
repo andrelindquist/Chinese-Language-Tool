@@ -1,0 +1,12 @@
+//Later rename something more generic
+.quiz-input {
+	background: #f4f4f4;
+    padding: 2px;
+    margin: 5px;
+    border: none;
+    border-bottom: $nav-border;
+    cursor: pointer;
+    	&.input-no { //move this out and into _quiz.scss / learn about placeholder
+    		width: 50px;
+    	}
+}

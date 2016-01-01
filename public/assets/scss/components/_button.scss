@@ -1,0 +1,28 @@
+.button {
+  padding: 8px 14px;
+  border: 1px solid #454545;
+  border-radius: 5px;
+  box-sizing: border-box;
+  font-weight: 600;
+  color: #454545;
+  cursor: pointer;
+  vertical-align: middle;
+  text-align: center;
+  -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+      &:hover, &:focus {
+        background-color: #cdcdfe;
+        color: #343434;
+      }
+      &.signup-button {
+        background-color: #bbd1cb;
+        color: #000038;
+        &:hover, &:focus {  //Included to make sign-up link behave just like all the others -- TODO DRY this
+          background-color: #cdcdfe;
+          color: #343434;
+        }
+      }
+}
+

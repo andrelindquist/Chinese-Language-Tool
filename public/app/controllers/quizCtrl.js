@@ -1,7 +1,6 @@
 //start angular module and inject services
 angular.module('quizCtrl', ['quizService', 'characterService', 'userService'])
 
-//character controller for the main page
 //inject character factory
 .controller('quizController', function(Quiz, Character, User, Auth) {
 
@@ -22,6 +21,7 @@ angular.module('quizCtrl', ['quizService', 'characterService', 'userService'])
 
 	vm.makeQuiz = function(key, value, number) {
 		console.log(key);
+		//conditional - if quizCriteria is selected, quiz will be generated based only on characters fitting the criteria
 		if (vm.userCharacters == false) {
 			vm.userCharacters = vm.characters;
 		}
@@ -50,7 +50,7 @@ angular.module('quizCtrl', ['quizService', 'characterService', 'userService'])
 	
 	vm.logResults = function(quiz) {
 		vm.logged = true;
-
+		//get User data which includes user's vocablist
 		Auth.getUser()
 		.then(function(data) {
 			vm.user = data.data;
@@ -60,19 +60,15 @@ angular.module('quizCtrl', ['quizService', 'characterService', 'userService'])
 			User.get(vm.username)
 		    	.success(function(data) {
 
-			  	//bind the users that come back to vm.characters
 			  	vm.user = data;
-			  	//Call function from service to PUT new vocabList
-			  	// console.log(User.logResults(vm.user.vocabList, quiz));
-			  	console.log(vm.user);
+			  	//Update user's vocablist using the userService
 			  	User.updateVocabList(vm.user.vocabList, quiz, vm.username);
 			  });    	
 		});
 	}
 
-	//		9/2/2015
 	//function to generate modified charData based on user's vocabList and quiz choice
-	vm.makeUserCriteria = function(quizType) { //quizType paramter chosen from quiz dropdown menu
+	vm.makeUserCriteria = function(quizType) { //quizType parameter chosen from quiz dropdown menu
 		//use a switch statement based on quizType to select a function to generate userCriteria array
 		vm.userCriteria = [];
 		vm.userCharacters = [];
@@ -85,7 +81,6 @@ angular.module('quizCtrl', ['quizService', 'characterService', 'userService'])
 			User.get(vm.username)
 		    	.success(function(data) {
 
-			  	//bind the users that come back to vm.characters
 			  	vm.user = data;
 
 			  	switch(quizType) {

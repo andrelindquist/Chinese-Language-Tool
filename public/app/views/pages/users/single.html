@@ -1,29 +1,22 @@
-<div class="page-header">
-	<h1 ng-if="user.type == 'create'">Create User</h1>
-	<h1 ng-if="user.type == 'edit'">Edit User</h1>
-</div>
+<h2 class="page-title" ng-if="user.type == 'create'">Create Account</h2>
+<h2 class="page-title" ng-if="user.type == 'edit'">Edit Account</h2>
 
-<form class="form-horizontal" ng-hide="main.loggedIn" ng-submit="user.saveUser()"><!--Hide User Create Form After Submission of if already logged in-->
+
+<form class="login-form" ng-hide="main.loggedIn" ng-submit="user.saveUser()"><!--Hide User Create Form After Submission of if already logged in-->
 
 	<div class="form-group">
-		<label class="col-sm-2 control-label">Username</label>
-		<div class="col-sm-6">
-			<input type="text" class="form-control" autocapitalize="none" required ng-model="user.userData.username">
-		</div>
+		<label>Username</label>
+		<input type="text" class="quiz-input" autocapitalize="none" required ng-model="user.userData.username">
 	</div>
 
 	<div class="form-group">
-		<label class="col-sm-2 control-label">Password</label>
-		<div class="col-sm-6">
-			<input type="password" class="form-control" autocapitalize="none" required ng-model="user.userData.password">
-		</div>
+		<label>Password</label>
+		<input type="password" class="quiz-input" autocapitalize="none" required ng-model="user.userData.password">
 	</div>
 	
-	<div class="form-group">
-	<div class="col-sm-offset-2 col-sm-6">
-		<button type="submit" class="btn btn-success btn-lg btn-block" ng-if="user.type == 'create'">Create User</button>
-		<button type="submit" class="btn btn-success btn-lg btn-block" ng-if="user.type == 'edit'">Update User</button>
-	</div>
+	<div>
+		<button type="submit" class="button" ng-if="user.type == 'create'">Create User</button>
+		<button type="submit" class="button" ng-if="user.type == 'edit'">Update User</button>
 	</div>
 
 </form>

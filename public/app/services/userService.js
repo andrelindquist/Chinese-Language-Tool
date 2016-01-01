@@ -69,7 +69,6 @@ angular.module('userService', [])
 	//update a user's vocabList property
 	userFactory.updateVocabList = function(vocabList, quiz, username) {
 		var updatedList = userFactory.logResults(vocabList, quiz);
-		console.log(updatedList);
 		return $http.put('/api/vocablist/' + username, updatedList);
 	}
 

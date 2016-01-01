@@ -1,0 +1,27 @@
+/* BASE - normalize, unstylings (list-style, etc), & base-styling (header size, containers, etc)
+========================================================================== */
+
+@import 'base/vendors/_normalize.scss';
+@import 'base/_globalstyle.scss';
+
+
+/* HELPERS - SASS variables
+========================================================================== */
+
+@import 'helpers/_variables.scss';
+
+
+/* COMPONENTS - buttons, nav, form-elements
+========================================================================== */
+
+@import 'components/_button.scss';
+@import 'components/_forms.scss';
+@import 'components/_navigation.scss';
+
+/* PAGES - home, flashcards, etc
+========================================================================== */ 
+
+@import 'pages/_flashcards.scss';
+@import 'pages/_home.scss';
+@import 'pages/_login.scss';
+@import 'pages/_quiz.scss';
