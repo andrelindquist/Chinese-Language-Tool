@@ -87,6 +87,7 @@ angular.module('characterCtrl', ['characterService', 'ngAnimate'])
 
 	var vm = this;
 	vm.symbol = '';
+	vm.addedCharacter;
 
 	vm.addChar = function() {
 		//only execute if vm.symbol is a single character
@@ -96,6 +97,8 @@ angular.module('characterCtrl', ['characterService', 'ngAnimate'])
 
 			Character.addChar(vm.symbol)
 				.success(function(data) {
+					vm.addedCharacter = data;
+					console.log(vm.addedCharacter);
 					vm.symbol = '';
 					$scope.$emit('UNLOAD');
 				});

@@ -476,7 +476,7 @@ apiRouter.route('/addchar/:symbol')
 					else
 						return res.send(err);
 				}
-					res.json({ message: 'character entered!' });
+					res.json({ character });
 			});
 		})
 	});
