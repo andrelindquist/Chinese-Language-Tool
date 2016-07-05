@@ -97,15 +97,22 @@ angular.module('characterCtrl', ['characterService', 'ngAnimate'])
 
 			Character.addChar(vm.symbol)
 				.success(function(data) {
-					vm.addedCharacter = data;
-					console.log(vm.addedCharacter);
+					
+					
+					// console.log(vm.addedCharacter.character);
 					vm.symbol = '';
 					$scope.$emit('UNLOAD');
+					vm.addedCharacter = data.character;
+					console.log(vm.addedCharacter.character);
 				});
 		}
 		else {
 			console.log('You must enter one character');
 		}
+	}
+
+	vm.closeAddedChar = function() {
+		vm.addedCharacter = '';
 	}
 })
 //////////////////////////////////////////////////////////////

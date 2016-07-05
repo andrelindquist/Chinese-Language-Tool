@@ -14,10 +14,22 @@
 		<input class="quiz-input flash-add-input" type="text" ng-model="characterAdder.symbol">
 		<button class="button button-add-char" ng-click="characterAdder.addChar()">Add Character</button>
 
-			<button ng-model="collapsed" ng-click="collapsed=!collapsed">?</button>
+		<button ng-model="collapsed" ng-click="collapsed=!collapsed">?</button>
 		<div ng-show="collapsed">If there is a character you'd like to see in the Flashcards, copy it and paste it here.  It should show up below almost instantaneously</div>
-
+		<div ng-if="characterAdder.addedCharacter" ng-init="addedChar.index = 0">
+			<span ng-click="characterAdder.closeAddedChar();">X</span>
+			<h2>Added Character</h2>
+			<h3>{{characterAdder.addedCharacter.symbol}}</h3>
+			<audio-button data-ng-click="update(); play()" pronunciation="{{characterAdder.addedCharacter.pronunciation}}" address="http://humanum.arts.cuhk.edu.hk/Lexis/Canton/sound/"><p class="audio">{{ characterAdder.addedCharacter.pronunciation }}<span class="glyphicon glyphicon-volume-up"></span></p></audio-button>
+			<p>{{characterAdder.addedCharacter.definition[addedChar.index] }}</p>
+			<p>
+				<button ng-click="addedChar.index = character.decrement(characterAdder.addedCharacter.definition.length, addedChar.index)"><</button>
+				<button ng-click="addedChar.index = character.increment(characterAdder.addedCharacter.definition.length, addedChar.index)">></button>
+			</p>
+		</div>
 	</div>
+
+
 
 	<!-- Test Loading -->
 	<div class="loading-add-char" ng-show="character.loading">Loading!!!!</div>
@@ -28,12 +40,12 @@
 		<button class="symbol" ng-click="showDetails = !showDetails" ng-class="{'active-flashcard': showDetails}">{{ char.symbol }}</button>
 	<!--Show Details on-click & add active-flashcard class to .symbol button-->
 		<div class="flashcard-details" ng-init="char.index = 0" ng-if="showDetails">
+			<audio-button data-ng-click="update(); play()" pronunciation="{{char.pronunciation}}" address="http://humanum.arts.cuhk.edu.hk/Lexis/Canton/sound/"><p class="audio">{{ char.pronunciation }}       <span class="glyphicon glyphicon-volume-up"></span></p></audio-button> <!--When using local audio files: address="../../../assets/audio/"-->
 			<p>{{ char.definition[char.index] }}</p>
 			<p>
 				<button ng-click="char.index = character.decrement(char.definition.length, char.index)"><</button>
 				<button ng-click="char.index = character.increment(char.definition.length, char.index)">></button>
 			</p>		
-			<audio-button data-ng-click="update(); play()" pronunciation="{{char.pronunciation}}" address="http://humanum.arts.cuhk.edu.hk/Lexis/Canton/sound/"><p class="audio">{{ char.pronunciation }}       <span class="glyphicon glyphicon-volume-up"></span></p></audio-button> <!--When using local audio files: address="../../../assets/audio/"-->
 			<p ng-show="char.radicals">Radicals: {{ char.radicals }}</p>
 			<p ng-show="char.strokeCount">Stroke Count: {{ char.strokeCount }}</p>
 			<p ng-show="char.category">Category: {{ char.category }}</p>
