@@ -24,20 +24,21 @@
 }
 
 .flashcard-dashboard {
+	position: relative;
 	margin: 0 auto 15px auto;
 	width: 85%;
 }
 
 .flash-add-input {
-	margin: 0;
-	height: 40px;
+    margin: 5px;
+    height: 33px;
 	width: 30px;
 	font-size: 1.3em;
 }
 
 .button-add-char {
 	margin-left: -6px;  //hack to remove space between button and input
-	background-color: #f4f4f4;
+	background-color: $nav-back-color;
 	border: none;
 	border-radius: 5px;
 }
@@ -49,7 +50,42 @@
 .char-adder {
 	display: inline-block;
 	max-width: 60%;
+	vertical-align: top;
 	float: right;
+}
+
+.added-char-box {
+	position: absolute;
+    display: inline-block;
+    width: 30%;
+    left: 34.5%;
+    top: 0px;
+    background: $nav-back-color;
+    border: $nav-border;
+    border-radius: .4em;
+}
+
+.added-char-box h2 {
+	text-align: center;
+}
+
+.added-char-x {
+	cursor: pointer;
+	font-size: 1.2em;
+    position: absolute;
+    top: 1%;
+    left: 94%;
+}
+
+.added-char-info {
+    width: 50%;
+    margin: 10px auto;
+    text-align: center;
+}
+
+.added-char-info h3 {
+	font-size: 2.4em;
+    margin: 0 0 20px;
 }
 
 .flashcard-controls {
@@ -85,6 +121,10 @@
 
 /*Char Add Loading Animation*/
 .loading-add-char {
+	position: absolute;
+	font-size: 1.2em;
+    left: 85%;
+    top: 48px;
 	color: #44dd44;
 	animation: anim 1.2s linear infinite;
 }
@@ -103,6 +143,7 @@
 
 /*audio directive*/
 .audio {
+	margin: 0;
 	height: 100%;
 	width: 100%;
 	cursor: pointer;
@@ -114,6 +155,12 @@
 /* Smartphones (portrait and landscape) ----------- */
 @media screen and (max-width: 480px) {
 	/*Flash Cards Page*/
+	.added-char-box {
+	    width: 80%;
+	    left: 10%;
+	    top: 100px;
+	}
+
 	.flash-card {
 		width: 18%;
 	}
@@ -131,8 +178,16 @@
 		width: 100%;
 	}
 
+	.flashcard-controls {
+		max-width: 30%;
+	}
+
+	.char-adder {
+		max-width: 70%;
+	}
+
 	.flash-dash-choice {
-		width: 100px;
+		width: 75px;
 	}
 
 	.flashcard-details { /*stops collapsible flashcard content from being squished on the right side of the screen*/
@@ -140,6 +195,11 @@
 		margin: 0 auto;
 	    left: 0;
 	    right: 0;
+	}
+
+	.loading-add-char {
+		top: 75%;
+		left: 55%;
 	}
 }
 /* Tablets etc */
