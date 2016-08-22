@@ -35,6 +35,7 @@ angular.module('userService', [])
 				if (!presentInList) {
 					var characterObject = {
 						symbol: quiz.questions[i].symbol,
+						strokeCount: quiz.questions[i].strokeCount,
 						proficiency: 1, 
 						nCorrect: 0, 
 						nWrong: 0

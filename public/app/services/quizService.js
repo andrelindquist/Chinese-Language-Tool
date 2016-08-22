@@ -59,6 +59,7 @@ angular.module('quizService', [])
 			this.questionType = getRandomNo(2);
 			this.symbol = charList[index].symbol;
 			this.pronunciation = charList[index].pronunciation;
+			this.strokeCount = charList[index].strokeCount; //this is needed to show the strokeCount in the dashboard view
 			if (this.questionType === 1) {
 				this.question = charList[index].symbol;
 				this.answer = charList[index].definition[0];

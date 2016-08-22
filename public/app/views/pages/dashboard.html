@@ -2,7 +2,8 @@
 <h4>Here is a list of the Chinese characters you've seen on the quizzes</h4>
 <select ng-model="dash.sortCriteria">
 	<option value="proficiency">Mastery</option>
-	<option value="nWrong">Wrong</option>
+	<option value="nWrong">Wrong Attempts</option>
+	<option value="strokeCount">Stroke Count</option>
 </select>
 <button ng-click="dash.toggleAscending()">Toggle Ascending</button>
 <button ng-click="dash.sort(dash.sortCriteria, dash.ascending)">Sort</button>
@@ -11,6 +12,7 @@
 	<thead>
 		<tr>
 			<th>Symbol</th>
+			<th>Stroke Count</th>
 			<th>Mastery</th>
 			<th>Correct</th>
 			<th>Wrong</th>
@@ -20,6 +22,7 @@
 	<tbody>
 		<tr ng-repeat="char in dash.user.vocabList">
 			<td>{{ char.symbol }}</td>
+			<td>{{ char.strokeCount }}</td>
 			<td>{{ char.proficiency }}</td>
 			<td>{{ char.nCorrect }}</td>
 			<td>{{ char.nWrong }}</td>

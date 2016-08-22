@@ -17,7 +17,7 @@ angular.module('dashboardCtrl', ['userService'])
 
 			  	//bind the users that come back to vm.characters
 			  	vm.user = data;
-			  	
+			  	console.log(vm.user);
 			  });
 		});
 
