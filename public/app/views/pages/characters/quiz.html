@@ -48,7 +48,7 @@
 			<select class="quiz-input" ng-if="!main.loggedIn">
 				<option value="">Random</option>
 			</select>
-		    <select class="quiz-input" ng-if="main.loggedIn" ng-model="quiz.criteria" ng-change="quiz.makeUserCriteria(quiz.criteria)">
+		    <select class="quiz-input" ng-if="main.loggedIn" ng-model="quiz.sortCriteria" ng-change="quiz.makeUserCriteria(quiz.sortCriteria)">
 		    	<option value="">Random</option>
 				<option value="new">New Chars</option>
 				<option value="reviewStageIII">Easy Review</option>

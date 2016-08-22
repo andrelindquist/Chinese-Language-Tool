@@ -1,5 +1,12 @@
 <h2>Hello {{dash.user.username}} </h2>
 <h4>Here is a list of the Chinese characters you've seen on the quizzes</h4>
+<select ng-model="dash.sortCriteria">
+	<option value="proficiency">Mastery</option>
+	<option value="nWrong">Wrong</option>
+</select>
+<button ng-click="dash.toggleAscending()">Toggle Ascending</button>
+<button ng-click="dash.sort(dash.sortCriteria, dash.ascending)">Sort</button>
+
 <table class="dash-table">
 	<thead>
 		<tr>
