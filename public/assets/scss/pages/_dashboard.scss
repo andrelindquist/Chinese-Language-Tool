@@ -17,3 +17,12 @@
 tr:nth-child(even), .table-header {
     background-color: $nav-back-color;
 }
+
+td {
+	text-align: center;
+	font-size: 1.1em;
+}
+
+.td-symbol {
+	font-size: 1.5em;
+}
