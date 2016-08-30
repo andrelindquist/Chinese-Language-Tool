@@ -1,0 +1,19 @@
+.dash-options {
+	margin-bottom: 15px;
+}
+
+.sort-options {
+	margin: 0;
+}
+
+.dash-table {
+	border: 1px solid #aaa;
+}
+
+.table-header {
+	border-bottom: $nav-border;
+}
+
+tr:nth-child(even), .table-header {
+    background-color: $nav-back-color;
+}
